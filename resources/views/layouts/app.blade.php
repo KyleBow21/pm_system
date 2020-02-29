@@ -11,7 +11,15 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
 </head>
+
+<style>
+    html {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    }
+</style>
+
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <div id="app">
         <nav class="bg-blue-900 shadow mb-8 py-6">

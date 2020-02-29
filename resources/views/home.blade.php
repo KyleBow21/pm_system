@@ -1,7 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app') <!-- ! Master layout -> app.blade.php -->
 
 @section('content')
     <div class="flex items-center">
+
+        @auth
+        <!-- Content that only authorised users can see goes here -->
         <div class="md:w-1/2 md:mx-auto">
 
             @if (session('status'))
@@ -18,10 +21,28 @@
 
                 <div class="w-full p-6">
                     <p class="text-gray-700">
-                        You are logged in!
+                        Welcome to Project Marking Scheme!
                     </p>
                 </div>
             </div>
         </div>
+        @endauth
+
+        @guest
+        <!-- Content that only guests can see goes here -->
+        <div class="md:w-1/2 md:mx-auto">
+            <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
+                <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
+                    Error
+                </div>
+                <div class="w-full p-6">
+                    <p class="text-gray-700">
+                        You must login to use this service
+                    </p>
+                </div>
+            </div>
+        </div>
+        @endguest
+        
     </div>
 @endsection
