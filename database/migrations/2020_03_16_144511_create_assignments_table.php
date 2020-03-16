@@ -18,6 +18,9 @@ class CreateAssignmentsTable extends Migration
             $table->unsignedBigInteger('module_id');
             //TODO: Forms, Submissions and Feedback columns.
             $table->timestamps();
+
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
