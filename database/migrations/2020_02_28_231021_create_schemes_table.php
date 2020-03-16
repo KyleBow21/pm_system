@@ -15,6 +15,9 @@ class CreateSchemesTable extends Migration
     {
         Schema::create('schemes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('scheme_name');
+            $table->datetime('year');
+            $table->integer('student_id');
             $table->timestamps();
         });
     }

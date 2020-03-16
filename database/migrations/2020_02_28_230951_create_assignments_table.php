@@ -15,6 +15,11 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('module_id');
+            $table->string('forms');
+            $table->string('forms');
+            $table->string('submissions');
+            $table->string('feedback');
             $table->timestamps();
         });
     }
