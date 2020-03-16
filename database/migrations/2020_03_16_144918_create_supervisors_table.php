@@ -15,6 +15,9 @@ class CreateSupervisorsTable extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('module_id');
             $table->timestamps();
         });
     }
