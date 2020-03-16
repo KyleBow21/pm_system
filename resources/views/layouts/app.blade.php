@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,53 +9,83 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+    <!-- All very messy at the moment! This is purely for development and testing and will be optimised for production! -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Progress Bar Script -->
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+
+    <!-- No point in making an external CSS file as we aren't using much at the moment -->
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .navbar {
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 500;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            color: rgba(0,0,0,0.90);
+        }
+
+        a, a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        .card {
+            border-radius: 2px;
+        }
+
+        .card-dark, .card-dark:hover {
+            text-decoration: none;
+            background-color: #263238;
+            color: #f5f5f5;
+        }
+
+        .btn {
+            border-radius: 2px;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+        }
+
+        .btn-sm {
+            padding: 0;
+        }
+    </style>
 </head>
+<body>
+    <div>
+        <main>
+            <!-- Content yielding uses the format of <folder>.<filename> | etc: inc.navbar -->
+            <!-- Not sure if we will be using a classic navbar; placeholder -->
+            <!-- Displays the navigation bar -->
+            
 
-<style>
-    html {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
-    }
-</style>
+            <!-- Gives way to error messages that we can show to the user -->
+            
 
-<body class="bg-gray-100 h-screen antialiased leading-none">
-    <div id="app">
-        <nav class="bg-blue-900 shadow mb-8 py-6">
-            <div class="container mx-auto px-6 md:px-0">
-                <div class="flex items-center justify-center">
-                    <div class="mr-6">
-                        <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                            {{ config('app.name', 'Laravel') }}
-                        </a>
-                    </div>
-                    <div class="flex-1 text-right">
-                        @guest
-                            <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            @if (Route::has('register'))
-                                <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            @endif
-                        @else
-                            <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
-
-                            <a href="{{ route('logout') }}"
-                               class="no-underline hover:underline text-gray-300 text-sm p-3"
-                               onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                                {{ csrf_field() }}
-                            </form>
-                        @endguest
-                    </div>
-                </div>
+            <!-- Final yield which displays our content for each page -->
+            <div class="container mt-5 p-0" id="app">
+                @yield('content')
             </div>
-        </nav>
-
-        @yield('content')
+        </main>
     </div>
-
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
+    @routes
+    <script src="{{ asset('js/app.js') }}"></script>    
 </body>
 </html>
