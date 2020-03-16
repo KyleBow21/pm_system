@@ -15,7 +15,17 @@ class CreateStaffTable extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('staff_name');
+            $table->unsignedBigInteger('module_id');
+            $table->unsignedBigInteger('project_id');
             $table->timestamps();
+
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('project_id')->references('id')
+            ->on('projects')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
