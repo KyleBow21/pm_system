@@ -62,8 +62,9 @@
             </ul>
         </nav>
 
-        <main id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <main id="content" class="container pt-5">
+
+            <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
         
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -72,7 +73,7 @@
                     </button>
         
                 </div>
-            </nav>
+            </nav>-->
 
             @yield('content')
         </main>
