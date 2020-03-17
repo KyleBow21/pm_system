@@ -11,18 +11,13 @@
 |
 */
 
+// TODO: This will most likely be changed to re-direct to login.
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+// TODO: Tie up all routes to at least the projects and assignments pages
+// ! Auth must be implemented
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
