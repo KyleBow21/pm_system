@@ -16,8 +16,6 @@ class CreateMarksTable extends Migration
         Schema::create('marks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('module_id');
-            $table->unsignedBigInteger('scheme_id');
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')
