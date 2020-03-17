@@ -14,8 +14,18 @@ class CreateSupervisorProjectTable extends Migration
     public function up()
     {
         Schema::create('supervisor_project', function (Blueprint $table) {
-            $table->bigIncrements('id');
+          //  $table->bigIncrements('id');
+            $table->primary(['supervisor_id', 'project_id']);
+            $table->unsignedBigInteger('supervisor_id');
+            $table->unsignedBigInteger('project_id');
             $table->timestamps();
+
+            $table->foreign('supervisor_id')->references('id')
+            ->on('supervisors')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('project_id')->references('id')
+            ->on('projects')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

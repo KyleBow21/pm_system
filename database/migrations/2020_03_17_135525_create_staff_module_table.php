@@ -14,8 +14,18 @@ class CreateStaffModuleTable extends Migration
     public function up()
     {
         Schema::create('staff_module', function (Blueprint $table) {
-            $table->bigIncrements('id');
+          //  $table->bigIncrements('id');
+            $table->primary(['staff_id', 'module_id']);
+            $table->unsignedBigInteger('staff_id');
+            $table->unsignedBigInteger('module_id');
             $table->timestamps();
+
+            $table->foreign('staff_id')->references('id')
+            ->on('staff')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

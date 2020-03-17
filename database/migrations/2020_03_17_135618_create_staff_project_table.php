@@ -14,8 +14,17 @@ class CreateStaffProjectTable extends Migration
     public function up()
     {
         Schema::create('staff_project', function (Blueprint $table) {
-            $table->bigIncrements('id');
+          //  $table->bigIncrements('id');
+            $table->primary(['staff_id', 'project_id']);
+            $table->unsignedBigInteger('staff_id');
+            $table->unsignedBigInteger('project_id');
             $table->timestamps();
+
+            $table->foreign('staff_id')->references('id')
+            ->on('staff')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('project_id')->references('id')
+            ->on('projects')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

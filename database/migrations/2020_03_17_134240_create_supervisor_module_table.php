@@ -14,8 +14,18 @@ class CreateSupervisorModuleTable extends Migration
     public function up()
     {
         Schema::create('supervisor_module', function (Blueprint $table) {
-            $table->bigIncrements('id');
+          //  $table->bigIncrements('id');
+            $table->primary(['supervisor_id', 'module_id']);
+            $table->unsignedBigInteger('supervisor_id');
+            $table->unsignedBigInteger('module_id');
             $table->timestamps();
+
+            $table->foreign('supervisor_id')->references('id')
+            ->on('supervisors')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

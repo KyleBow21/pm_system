@@ -14,8 +14,18 @@ class CreateStudentAssignmentTable extends Migration
     public function up()
     {
         Schema::create('student_assignment', function (Blueprint $table) {
-            $table->bigIncrements('id');
+          //  $table->bigIncrements('id');
+            $table->primary(['student_id', 'assignment_id']);
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('assignment_id');
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')
+            ->on('students')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('assignment_id')->references('id')
+            ->on('assignments')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
