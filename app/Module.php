@@ -10,4 +10,14 @@ class Module extends Model
   {
     return $this->hasMany('App\Assignment');
   }
+
+  public function supervisors()
+  {
+    return $this->hasMany('App\Supervisor');
+  }
+
+  public function students()
+  {
+    return $this->hasMany('App\Student');
+  }
 }

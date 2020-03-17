@@ -11,7 +11,7 @@ class Marks extends Model
     return $this->hasOne('App\Project');
   }
 
-
+  
 
 
 }

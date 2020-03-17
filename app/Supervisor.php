@@ -15,4 +15,9 @@ class Supervisor extends Model
   {
     return $this->hasMany('App\Project');
   }
+
+  public function modules()
+  {
+    return $this-hasMany('App\Module');
+  }
 }

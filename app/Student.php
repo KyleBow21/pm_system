@@ -15,4 +15,9 @@ class Student extends Model
     {
       return $this-hasOne('App\Project');
     }
+
+    public function modules()
+    {
+      return $this->hasMany('App\Module');
+    }
 }
