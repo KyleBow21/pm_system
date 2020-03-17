@@ -13,11 +13,11 @@ class Student extends Model
 
     public function projects()
     {
-      return $this-hasOne('App\Project');
+      return $this-belongsToOne('App\Project');
     }
 
     public function modules()
     {
-      return $this->hasMany('App\Module');
+      return $this->belongsToMany('App\Module');
     }
 }

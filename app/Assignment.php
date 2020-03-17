@@ -8,6 +8,6 @@ class Assignment extends Model
 {
   public function modules()
   {
-    return $this->hasOne('App\Module');
+    return $this->belongsToOne('App\Module');
   }
 }

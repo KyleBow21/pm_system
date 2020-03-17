@@ -8,7 +8,7 @@ class Project extends Model
 {
   public function supervisors()
   {
-    return $this->hasOne('App\Supervisor');
+    return $this->belongsToMany('App\Supervisor');
   }
 
   public function students()
@@ -18,7 +18,7 @@ class Project extends Model
 
   public function marks()
   {
-    return $this->hasOne('App\Marks');
+    return $this->belongsToOne('App\Marks');
   }
 
   public function schemes()

@@ -13,7 +13,7 @@ class Module extends Model
 
   public function supervisors()
   {
-    return $this->hasMany('App\Supervisor');
+    return $this->belongsToMany('App\Supervisor');
   }
 
   public function students()

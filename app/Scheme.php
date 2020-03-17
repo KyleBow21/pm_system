@@ -10,4 +10,9 @@ class Scheme extends Model
   {
     return $this->hasMany('App\Student');
   }
+
+  public function projects()
+  {
+    return $this->belongsToMany('App\Project');
+  }
 }
