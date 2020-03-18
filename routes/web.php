@@ -13,7 +13,7 @@
 
 // TODO: This will most likely be changed to re-direct to login.
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // TODO: Tie up all routes to at least the projects and assignments pages

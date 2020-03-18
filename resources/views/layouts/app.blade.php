@@ -25,45 +25,34 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Swansea University</h3>
+                <h3>Swansea University<br>PMS</h3>
             </div>
 
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button>
+
             <ul class="list-unstyled components">
-                <p>User information goes here (eventually)</p>
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        User Name<span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
+                <!-- User information can go here -->
+                <p>John Doe</p>
+                
                 <li class="active">
-                    <a href="#">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                 </li>
-                <li>
-                    <a href="#">Projects</a>
-                </li>
+                
                 <li>
                     <a href="#moduleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Modules</a>
+                    <!-- Implement a for loop to populate with modules a user is subbed to -->
                     <ul class="collapse list-unstyled" id="moduleSubmenu">
                         <li>
-                            <a href="#">Module 1</a>
+                            <a href="#">CSM01</a>
                         </li>
                         <li>
-                            <a href="#">Module 2</a>
+                            <a href="#">CSM02</a>
                         </li>
                         <li>
-                            <a href="#">Module 3</a>
+                            <a href="#">CSM03</a>
                         </li>
                     </ul>
                 </li>
@@ -71,27 +60,12 @@
                     <a href="#">Assignments</a>
                 </li>
                 <li>
-                    <a href="#">Contacts</a>
-                </li>
-                <li>
-                    <a href="#">Settings</a>
+                    <a href="#">Marks</a>
                 </li>
             </ul>
         </nav>
-
-        <main id="content" class="container pt-5">
-
-            <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
         
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-        
-                </div>
-            </nav>-->
-
+        <main class="py-4" id="content">
             @yield('content')
         </main>
     </div>
