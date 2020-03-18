@@ -65,7 +65,9 @@
             </ul>
         </nav>
         
-        <main class="py-4" id="content">
+        <main id="content">
+            @include('inc.navbar')
+            <div class="py-4"></div>
             @yield('content')
         </main>
     </div>

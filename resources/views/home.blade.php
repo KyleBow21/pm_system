@@ -14,7 +14,14 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>This is the home page!</p>
+                    <br>
+                    @guest
+                        <p>You are not logged in!</p>
+                    @endguest
+                    @auth
+                    <p>You are logged in! Hello, <b>{{ Auth::user()->name }}</b></p>
+                    @endauth
                 </div>
             </div>
         </div>
