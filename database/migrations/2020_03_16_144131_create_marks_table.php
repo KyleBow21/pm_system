@@ -21,11 +21,7 @@ class CreateMarksTable extends Migration
             $table->foreign('project_id')->references('id')
             ->on('projects')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('module_id')->references('id')
-            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('scheme_id')->references('id')
-            ->on('schemes')->onDelete('cascade')->onUpdate('cascade');
+            
         });
     }
 
