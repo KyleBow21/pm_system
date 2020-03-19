@@ -28,15 +28,7 @@
                 <h3>Swansea University<br>PMS</h3>
             </div>
 
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Toggle Sidebar</span>
-            </button>
-
-            <ul class="list-unstyled components">
-                <!-- User information can go here -->
-                <p>John Doe</p>
-                
+            <ul class="list-unstyled components pt-0">                
                 <li class="active">
                     <a href="{{ route('home') }}">Home</a>
                 </li>
