@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in and this is assignments page!
+                    You are logged in and this is modules page!
 
                     <!-- We will display information about projects here -->
                     <div></div>

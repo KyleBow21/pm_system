@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -14,13 +14,12 @@
                         </div>
                     @endif
 
-                    You are logged in and this is assignments page!
-
-                    <!-- We will display information about projects here -->
-                    <div></div>
+                    You are logged in and this is projects create page!
 
                     <ul>
-                        
+                        @foreach ($projects as $project)
+                            <li>{{ $project->project_name }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -15,8 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         // * Get all projects and redirect to projects.index.php
-        $projects = Project::all();
-        return view('projects.index'. ['projects' => $projects]);
+        return view('projects.index');
     }
 
     /**
