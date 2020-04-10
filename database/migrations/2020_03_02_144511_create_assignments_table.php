@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMarksTable extends Migration
+class CreateAssignmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateMarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('assignments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('mark_score');
-            $table->unsignedBigInteger('project_id');
+            $table->string('assignment_name');
+            //TODO: Forms, Submissions and Feedback columns.
             $table->timestamps();
-
-            $table->foreign('project_id')->references('id')
-            ->on('projects')->onDelete('cascade')->onUpdate('cascade');
 
 
         });
@@ -33,6 +30,6 @@ class CreateMarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('assignments');
     }
 }

@@ -25,7 +25,11 @@ class CreateModulesTable extends Migration
 
             $table->foreign('staff_id')->references('id')
             ->on('staff')->onDelete('cascade')->onUpdate('cascade');
+
+
         });
+
+
     }
 
     /**
