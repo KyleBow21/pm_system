@@ -15,13 +15,12 @@ class CreateSchemesTable extends Migration
     {
         Schema::create('schemes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('project_name');
-            $table->year('project_year');
-            $table->unsignedBigInteger('student_id');
+            $table->string('scheme_name');
+            $table->unsignedBigInteger('module_id');
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')
-            ->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

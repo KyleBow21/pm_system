@@ -17,20 +17,16 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('project_name');
             $table->multiLineString('project_description');
-            $table->unsignedBigInteger('supervisor_id');
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('scheme_id');
+            $table->unsignedBigInteger('staff_id');
             $table->unsignedBigInteger('module_id');
             $table->timestamps();
-
-            $table->foreign('supervisor_id')->references('id')
-            ->on('supervisors')->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreign('student_id')->references('id')
             ->on('students')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('scheme_id')->references('id')
-            ->on('schemes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('staff_id')->references('id')
+            ->on('staff')->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreign('module_id')->references('id')
             ->on('modules')->onDelete('cascade')->onUpdate('cascade');

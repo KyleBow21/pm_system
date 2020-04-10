@@ -15,13 +15,14 @@ class CreateMarksTable extends Migration
     {
         Schema::create('marks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('mark_score');
             $table->unsignedBigInteger('project_id');
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')
             ->on('projects')->onDelete('cascade')->onUpdate('cascade');
 
-            
+
         });
     }
 

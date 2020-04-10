@@ -15,12 +15,12 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('module_id');
+            $table->string('assignment_name');
+
             //TODO: Forms, Submissions and Feedback columns.
             $table->timestamps();
 
-            $table->foreign('module_id')->references('id')
-            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

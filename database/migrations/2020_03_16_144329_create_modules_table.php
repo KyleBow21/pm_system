@@ -15,19 +15,16 @@ class CreateModulesTable extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('module_name');
             $table->unsignedBigInteger('assignment_id');
-            $table->unsignedInteger('supervisor_id');
-            $table->unsignedInteger('student_id');
+            $table->unsignedBigInteger('staff_id');
             $table->timestamps();
 
             $table->foreign('assignment_id')->references('id')
             ->on('assignments')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('supervisor_id')->references('id')
-            ->on('supervisors')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('student_id')->references('id')
-            ->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('staff_id')->references('id')
+            ->on('staff')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -16,23 +16,16 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('student_name');
-            $table->unsignedBigInteger('scheme_id');
             $table->unsignedBigInteger('module_id');
-            $table->unsignedBigInteger('assignment_id');
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('scheme_id');
             $table->timestamps();
+
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreign('scheme_id')->references('id')
             ->on('schemes')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('module_id')->references('id')
-            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('assignment_id')->references('id')
-            ->on('assignments')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('module_id')->references('id')
-            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
