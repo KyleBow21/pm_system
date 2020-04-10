@@ -6,13 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-   public function Marks()
+   public function marks()
    {
      return $this->hasOne('App\Marks');
    }
 
-   public function Module()
+   public function module()
    {
      return $this->BelongsTo('App\Module');
+   }
+
+   public function students()
+   {
+     return $this->hasMany('App\Student');
    }
 }

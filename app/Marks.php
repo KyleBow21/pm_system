@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Marks extends Model
 {
-  public function Project()
+  public function project()
   {
     return $this->BelongsTo('App\Project');
   }
