@@ -14,5 +14,6 @@ class AssignmentTableSeeder extends Seeder
     {
         $a = new Assignment;
         $a->assignment_name = "Project Marking System";
+        $a->save();
     }
 }

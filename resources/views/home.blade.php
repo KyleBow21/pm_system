@@ -21,6 +21,10 @@
                     @endguest
                     @auth
                     <p>You are logged in! Hello, <b>{{ Auth::user()->name }}</b></p>
+
+                    @foreach ($modules as $module)
+                        <li>{{ $module->module_name }}</li>
+                    @endforeach
                     @endauth
                 </div>
             </div>

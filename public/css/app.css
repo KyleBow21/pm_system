@@ -10928,6 +10928,7 @@ a:focus {
   background: #253A4A;
   color: whitesmoke;
   transition: all 0.3s;
+  box-shadow: 3px 0 5px 0 rgba(0, 0, 0, 0.35);
 }
 
 #sidebar.active {
@@ -10966,16 +10967,16 @@ a[aria-expanded=true] {
   background: #182530;
 }
 
-a[data-toggle=collapse] {
-  position: relative;
-}
-
-.dropdown-toggle::after {
+#sidebar .dropdown-toggle::after {
   display: block;
   position: absolute;
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+}
+
+a[data-toggle=collapse] {
+  position: relative;
 }
 
 ul ul a {

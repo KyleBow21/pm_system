@@ -37,22 +37,13 @@
                     <a href="#moduleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Modules</a>
                     <!-- Implement a for loop to populate with modules a user is subbed to -->
                     <ul class="collapse list-unstyled" id="moduleSubmenu">
-                        <li>
-                            <a href="#">CSM01</a>
-                        </li>
-                        <li>
-                            <a href="#">CSM02</a>
-                        </li>
-                        <li>
-                            <a href="#">CSM03</a>
-                        </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">Assignments</a>
                 </li>
                 <li>
-                    <a href="{{ route('projects') }}">Projects</a>
+                    <a href="#">Projects</a>
                 </li>
                 <li>
                     <a href="#">Marks</a>

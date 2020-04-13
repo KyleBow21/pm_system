@@ -28,4 +28,3 @@ Route::resource('projects', 'ProjectController');
 Route::resource('modules', 'ModuleController');
 Route::resource('assignments', 'AssignmentController');
 Route::resource('marks', 'MarkController');
-

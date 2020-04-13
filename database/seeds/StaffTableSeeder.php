@@ -15,9 +15,11 @@ class StaffTableSeeder extends Seeder
         $s = new Staff;
         $s->staff_name = "Kyle";
         $s->staff_role = "Lecturer";
+        $s->save();
 
         $s = new Staff;
         $s->staff_name = "Callum";
         $s->staff_role = "Supervisor";
+        $s->save();
     }
 }
