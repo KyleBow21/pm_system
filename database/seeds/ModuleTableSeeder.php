@@ -1,5 +1,6 @@
 <?php
 
+use App\Module;
 use Illuminate\Database\Seeder;
 
 class ModuleTableSeeder extends Seeder
@@ -11,6 +12,9 @@ class ModuleTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $m = new Module;
+        $m->module_name = 'Software Team Project';
+        $m->assignment_id = 1;
+             
     }
 }
