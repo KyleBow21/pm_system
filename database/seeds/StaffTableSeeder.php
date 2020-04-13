@@ -1,5 +1,6 @@
 <?php
 
+use App\Staff;
 use Illuminate\Database\Seeder;
 
 class StaffTableSeeder extends Seeder
@@ -11,6 +12,12 @@ class StaffTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $s = new Staff;
+        $s->staff_name = "Kyle";
+        $s->staff_role = "Lecturer";
+
+        $s = new Staff;
+        $s->staff_name = "Callum";
+        $s->staff_role = "Supervisor";
     }
 }
