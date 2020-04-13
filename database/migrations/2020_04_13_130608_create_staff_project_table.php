@@ -20,8 +20,8 @@ class CreateStaffProjectTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')
-            ->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('staff_id')->references('id')
+            ->on('staff')->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreign('project_id')->references('id')
             ->on('projects')->onDelete('cascade')->onUpdate('cascade');
