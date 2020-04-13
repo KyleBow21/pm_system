@@ -15,4 +15,9 @@ class Student extends Model
      {
        return $this->belongsTo('App\Project');
      }
+
+     public function modules()
+     {
+       return $this->belongsToMany('App\Module');
+     }
 }

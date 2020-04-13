@@ -20,4 +20,11 @@ class Project extends Model
    {
      return $this->hasMany('App\Student');
    }
-}
+
+   public function staff()
+   {
+     return $this->belongsToMany('App\Staff');
+   }
+
+
+   }
