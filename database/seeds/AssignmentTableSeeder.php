@@ -1,5 +1,6 @@
 <?php
 
+use App\Assignment;
 use Illuminate\Database\Seeder;
 
 class AssignmentTableSeeder extends Seeder
@@ -11,6 +12,7 @@ class AssignmentTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $a = new Assignment;
+        $a->assignment_name = "Project Marking System";
     }
 }
