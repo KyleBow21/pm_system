@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Feather icons (will be compiled with scss, this is just for testing!) -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
     <div id="app" class="wrapper">
@@ -57,6 +60,10 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        feather.replace();
+    </script>
 
     <script>
         $(document).ready(function () {

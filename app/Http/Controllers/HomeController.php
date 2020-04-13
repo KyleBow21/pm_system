@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $modules = Module::orderBy('id', 'asc');
+        $modules = Module::all();
         return view('home')->with('modules', $modules);
     }
 }

@@ -11021,6 +11021,36 @@ a.article:hover {
   width: 100%;
 }
 
+#dashboard li {
+  font-family: CircularStd;
+  padding: 10px;
+  padding-right: 0px;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  font-size: 14px;
+  grid-gap: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+#dashboard li:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  align-self: center;
+  -webkit-animation: icon 1.5s infinite forwards;
+          animation: icon 1.5s infinite forwards;
+}
+
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
@@ -11040,6 +11070,26 @@ a.article:hover {
 
   #sidebarCollapse span {
     display: none;
+  }
+}
+
+@-webkit-keyframes icon {
+  0%, 100% {
+    transform: translate(0px);
+  }
+
+  50% {
+    transform: translate(3px);
+  }
+}
+
+@keyframes icon {
+  0%, 100% {
+    transform: translate(0px);
+  }
+
+  50% {
+    transform: translate(3px);
   }
 }
 
