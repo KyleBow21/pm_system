@@ -11,6 +11,9 @@ class SchemeTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $s = new Scheme();
+        $s->scheme_name = "MSc Advanced Software Technology";
+        $s->module_id = 1;
+        $s->save();
     }
 }
