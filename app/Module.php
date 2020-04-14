@@ -16,15 +16,12 @@ class Module extends Model
       return $this->hasMany('App\Assignment');
     }
 
-  public function students()
-   {
-     return $this->belongsToMany('App\Student');
-   }
-
-   public function staff()
+    public function users()
     {
-      return $this->belongsToMany('App\Staff');
+      return $this->belongsToMany('App\User');
     }
+
+
 
     public function schemes()
      {

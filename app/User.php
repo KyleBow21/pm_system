@@ -6,6 +6,27 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+class User extends Model {
+
+   public function project()
+   {
+     return $this->belongsTo('App\Project');
+   }
+
+   public function scheme()
+   {
+     return $this->belongsTo('App\Scheme');
+   }
+
+   public function modules()
+   {
+     return $this->belongsToMany('App\Module');
+   }
+
+
+
+}
+
 class User extends Authenticatable
 {
     use Notifiable;

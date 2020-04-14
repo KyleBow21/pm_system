@@ -16,17 +16,15 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('project_name');
+            $table->string('project_year');
+            $table->string('project_type');
             $table->multiLineString('project_description');
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('staff_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('module_id');
             $table->timestamps();
 
-            $table->foreign('student_id')->references('id')
-            ->on('students')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('staff_id')->references('id')
-            ->on('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')
+            ->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->foreign('module_id')->references('id')
             ->on('modules')->onDelete('cascade')->onUpdate('cascade');

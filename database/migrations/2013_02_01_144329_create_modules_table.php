@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStaffTable extends Migration
+class CreateModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,22 @@ class CreateStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('staff', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('staff_name');
-            $table->string('staff_role');
+            $table->string('module_name');
+            $table->unsignedBigInteger('assignment_id');
+
             $table->timestamps();
+
+            $table->foreign('assignment_id')->references('id')
+            ->on('assignments')->onDelete('cascade')->onUpdate('cascade');
+
+            
 
 
         });
+
+
     }
 
     /**
@@ -30,6 +38,6 @@ class CreateStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('modules');
     }
 }

@@ -17,10 +17,19 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('role')->nullable();
+            $table->unsignedBigInteger('scheme_id')->nullable();
+            $table->unsignedBigInteger('module_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('scheme_id')->references('id')
+            ->on('schemes')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('module_id')->references('id')
+            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

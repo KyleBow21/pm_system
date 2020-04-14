@@ -16,15 +16,12 @@ class Project extends Model
      return $this->BelongsTo('App\Module');
    }
 
-   public function students()
+   public function users()
    {
-     return $this->hasMany('App\Student');
+     return $this->hasMany('App\User');
    }
 
-   public function staff()
-   {
-     return $this->belongsToMany('App\Staff');
-   }
+
 
 
    }
