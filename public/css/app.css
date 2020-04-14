@@ -10905,6 +10905,11 @@ input {
   border-radius: 2px;
 }
 
+.card-header {
+  background-color: #253A4A;
+  color: white;
+}
+
 a,
 a:hover,
 a:focus {
@@ -11015,6 +11020,7 @@ a.article:hover {
   position: absolute;
   top: 0;
   right: 0;
+  background-color: #fafaff;
 }
 
 #content.active {
