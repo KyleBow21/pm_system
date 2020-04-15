@@ -48,6 +48,19 @@ a:focus {
     width: 100%;
 }
 
+#searchbar {
+    border: 0;
+    font-size: 18px;
+    padding: 3px;
+}
+
+#searchbar:focus {
+    //box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.3);
+    background-color: rgba(0, 0, 0, 0.10);
+    outline: none;
+    transition: all 0.3s;
+}
+
 #sidebar {
     width: 250px;
     position: fixed;

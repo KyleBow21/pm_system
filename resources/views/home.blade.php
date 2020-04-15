@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="dashboard">
     <div class="row justify-content-center">
-        <div class="col-md-10" id="dashboard">
+        <div class="col-md-12 px-5">
             <div class="card-deck">
             <div class="card">
                 <div class="card-header">Modules</div>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="row justify-content-center pt-5">
-        <div class="col-md-10" id="dashboard">
+        <div class="col-md-12 px-5">
             <div class="card-deck">
             <div class="card">
                 <div class="card-header">Projects</div>
