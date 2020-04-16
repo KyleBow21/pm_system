@@ -44,8 +44,8 @@
 
                     <!-- Show if the user has logged in -->
                     @auth
-                    @foreach ($modules as $module)
-                        <li>{{ $module->module_name }} <i data-feather="chevron-right"></i></li>
+                    @foreach ($assignments as $assignment)
+                        <li>{{ $assignment->assignment_name }} <i data-feather="chevron-right"></i></li>
                     @endforeach
                     @endauth
                 </div>
@@ -73,8 +73,8 @@
 
                     <!-- Show if the user has logged in -->
                     @auth
-                    @foreach ($modules as $module)
-                        <li>{{ $module->module_name }} <i data-feather="chevron-right"></i></li>
+                    @foreach ($projects as $project)
+                        <li>{{ $project->project_name }} <i data-feather="chevron-right"></i></li>
                     @endforeach
                     @endauth
                 </div>
@@ -96,8 +96,8 @@
 
                     <!-- Show if the user has logged in -->
                     @auth
-                    @foreach ($modules as $module)
-                        <li>{{ $module->module_name }} <i data-feather="chevron-right"></i></li>
+                    @foreach ($marks as $mark)
+                        <li>{{ $mark->mark_score }} <i data-feather="chevron-right"></i></li>
                     @endforeach
                     @endauth
                 </div>
