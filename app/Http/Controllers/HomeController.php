@@ -7,7 +7,8 @@ use App\Marks;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Module;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -27,9 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $id = Auth::id();
+        $projects = DB::table('projects')->where('user_id', '=', $id)->get();
         $modules = Module::all();
         $assignments = Assignment::all();
-        $projects = Project::all();
+        //$projects = Project::all();
         $marks = Marks::all();
         $data = [
             'modules'  => $modules,
