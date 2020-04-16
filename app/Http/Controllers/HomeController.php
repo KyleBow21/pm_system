@@ -28,6 +28,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Good way you can check if someone is authenticated.
+        if(Auth::check()) {
+            // Get the user as a collection
+            $user = Auth::user();
+            // We can get everything from the above, including ID
+            $id = $user->id;
+            // Use DD to dump everything associated with a variable
+            // dd($id);
+        }
+        else {
+            // Will always return the user to the login page if they are not logged in (only applicable to the home page here!)
+            return view('login');            
+        }
+
 //        $user = Auth::user();
 //        $id = Auth::id();
 //        $usermodule = DB::table('Users')->where('id','=', $id)->get('module_id')->first();

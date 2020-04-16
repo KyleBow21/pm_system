@@ -26,7 +26,7 @@ $factory->define(Project::class, function (Faker $faker) use ($autoIncrement){
 
 function autoIncrement()
 {
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < 50; $i++) {
         yield $i;
     }
 }
