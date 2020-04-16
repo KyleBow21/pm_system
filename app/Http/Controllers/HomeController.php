@@ -28,15 +28,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $id = Auth::id();
-        $usermodule = DB::table('Users')->where('id','=', $id)->get('module_id')->first();
-        $projects = DB::table('projects')->where('user_id', '=', $id)->get();
-        $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
-
-        $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
-        //$projects = Project::all();
+//        $user = Auth::user();
+//        $id = Auth::id();
+//        $usermodule = DB::table('Users')->where('id','=', $id)->get('module_id')->first();
+//        $projects = DB::table('projects')->where('user_id', '=', $id)->get();
+//        $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
+//
+//        $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
+//        //$projects = Project::all();
+        //Temp fix till I get food.
         $marks = Marks::all();
+        $modules = Module::all();
+        $assignments = Assignment::all();
+        $projects = Project::all();
         $data = [
             'modules'  => $modules,
             'assignments'   => $assignments,
