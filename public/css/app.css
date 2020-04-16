@@ -11030,6 +11030,15 @@ a.article:hover {
   max-height: 600px;
 }
 
+.fixed-head thead {
+  width: 97%;
+}
+
+.fixed-head tbody {
+  height: 600px;
+  overflow-y: auto;
+}
+
 #content {
   width: calc(100% - 250px);
   min-height: 100vh;

@@ -36,12 +36,27 @@
                             </div>
                         </div>
                     </form>
-
-                    <hr>
                     <div class="scrollable">
-                        @foreach ($projects as $project)
-                            <li>{{ $project->project_name }} <i data-feather="chevron-right"></i></li>
-                        @endforeach
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Project Year</th>
+                                    <th scope="col">Project Name</th>
+                                    <th scope="col">Project Description</th>
+                                    <th scope="col">Project Type</th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                    @foreach ($projects as $project)
+                                        <tr>
+                                            <td>{{$project->project_year}}</td>
+                                            <td>{{$project->project_name}}</td>
+                                            <td>{{$project->project_description}}</td>
+                                            <td>{{$project->project_type}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                        </table>
                     </div>
                     
                     @endauth
