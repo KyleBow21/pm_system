@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Scheme;
 class SchemeTableSeeder extends Seeder
 {
     /**

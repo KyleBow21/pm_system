@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Marks;
 class MarksTableSeeder extends Seeder
 {
     /**
@@ -11,6 +11,9 @@ class MarksTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $m = new Marks();
+        $m->mark_score = 90;
+        $m->project_id = 1;
+        $m->save();
     }
 }
