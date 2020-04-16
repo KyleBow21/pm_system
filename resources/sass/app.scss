@@ -151,6 +151,11 @@ a.article:hover {
     color: #fff !important;
 }
 
+.scrollable {
+    overflow-y: auto;
+    max-height: 600px;
+}
+
 #content {
     width: calc(100% - 250px);
     min-height: 100vh;
@@ -181,6 +186,10 @@ a.article:hover {
 #dashboard li:hover {
     background: rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
+}
+
+#project-table {
+    max-height: 800px;
 }
 
 .feather {

@@ -7,6 +7,9 @@ use App\Project;
 
 class ProjectController extends Controller
 {
+    public function __construct() {
+        // $this->middleware('auth', ['except' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +19,7 @@ class ProjectController extends Controller
     {
         // * Get all projects and redirect to projects.index.php
         // ? Possibly implement the feature to get only projects that apply to the current user?
-        $projects = Project::all();
+        $projects = Project::orderBy('project_name', 'asc')->get();
         return view('projects.index')->with('projects', $projects);
     }
 
