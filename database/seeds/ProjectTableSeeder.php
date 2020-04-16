@@ -19,5 +19,8 @@ class ProjectTableSeeder extends Seeder
         $p->user_id = 1;
         $p->module_id =  1;
         $p->save();
+
+        // Call the project factory.
+        factory(App\Project::class, 50)->create();
     }
 }

@@ -15,7 +15,9 @@ class ProjectController extends Controller
     public function index()
     {
         // * Get all projects and redirect to projects.index.php
-        return view('projects.index');
+        // ? Possibly implement the feature to get only projects that apply to the current user?
+        $projects = Project::all();
+        return view('projects.index')->with('projects', $projects);
     }
 
     /**

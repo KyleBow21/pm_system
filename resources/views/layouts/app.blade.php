@@ -46,7 +46,7 @@
                     <a href="#">Assignments</a>
                 </li>
                 <li>
-                    <a href="#">Projects</a>
+                    <a href="{{ route('projects.index') }}">Projects</a>
                 </li>
                 <li>
                     <a href="#">Marks</a>
