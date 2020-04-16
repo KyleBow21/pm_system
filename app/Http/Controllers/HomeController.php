@@ -30,9 +30,11 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
+        $usermodule = DB::table('Users')->where('id','=', $id)->get('module_id')->first();
         $projects = DB::table('projects')->where('user_id', '=', $id)->get();
-        $modules = Module::all();
-        $assignments = Assignment::all();
+        $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
+
+        $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
         //$projects = Project::all();
         $marks = Marks::all();
         $data = [
