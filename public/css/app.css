@@ -11066,7 +11066,7 @@ a.article:hover {
 
 #content {
   width: calc(100% - 250px);
-  min-height: 100vh;
+  min-height: 100%;
   transition: all 0.3s;
   position: absolute;
   top: 0;
@@ -11076,6 +11076,10 @@ a.article:hover {
 
 #content.active {
   width: 100%;
+}
+
+#dashboard {
+  min-height: 100%;
 }
 
 #dashboard li {

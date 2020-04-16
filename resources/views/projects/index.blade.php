@@ -22,11 +22,11 @@
                     @auth
                     <form action="">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col">
                                 <label for="projectFilterName">Search</label>
                                 <input class="form-control" type="text" id="projectFilterName" placeholder="Search...">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col">
                                 <label for="projectFilterType">Project Type</label>
                                 <select class="form-control" name="" id="projectFilterType">
                                     <option selected>All</option>
@@ -34,10 +34,18 @@
                                     <option>Research</option>
                                 </select>
                             </div>
+
+                            <!-- "if" directive can be used to display content per user, good for authorisation -->
+                            @if(Auth::user()->role == "Admin")
+                            <div class="col-2">
+                                <label for="">Admin Controls</label>
+                                <button type="submit" class="form-control btn btn-primary" id="buttonCreateProject">Create Project</button>
+                            </div>
+                            @endif
                         </div>
                     </form>
                     <div class="table-responsive">
-                        <table class="table table-fixed">
+                        <table class="table table-hover table-fixed">
                             <thead>
                                 <tr>
                                     <th scope="col" class="col-1">Project Year</th>

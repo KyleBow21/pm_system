@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Project;
+use App\User;
 
 class ProjectController extends Controller
 {
@@ -20,7 +22,8 @@ class ProjectController extends Controller
         // * Get all projects and redirect to projects.index.php
         // ? Possibly implement the feature to get only projects that apply to the current user?
         $projects = Project::orderBy('project_name', 'asc')->get();
-        return view('projects.index')->with('projects', $projects);
+        $user = Auth::user();
+        return view('projects.index')->with('projects', $projects)->with('user', $user);
     }
 
     /**
