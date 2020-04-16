@@ -11,16 +11,12 @@
 |
 */
 
-// TODO: This will most likely be changed to re-direct to login.
-Route::get('/', function () {
-    return view('home');
-});
-
 // TODO: Tie up all routes to at least the projects and assignments pages
 // ! Auth must be implemented
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // TODO: Change the names of the controllers to match the naming conventions
 // ? Maps the default RESTful actions to each controller
