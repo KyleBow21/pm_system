@@ -36,29 +36,28 @@
                             </div>
                         </div>
                     </form>
-                    <div class="scrollable">
-                        <table class="table">
+                    <div class="table-responsive">
+                        <table class="table table-fixed">
                             <thead>
                                 <tr>
-                                    <th scope="col">Project Year</th>
-                                    <th scope="col">Project Name</th>
-                                    <th scope="col">Project Description</th>
-                                    <th scope="col">Project Type</th>
+                                    <th scope="col" class="col-1">Project Year</th>
+                                    <th scope="col" class="col-2">Project Name</th>
+                                    <th scope="col" class="col-6">Project Description</th>
+                                    <th scope="col" class="col-3">Project Type</th>
                                 </tr>
                             </thead>
                                 <tbody>
                                     @foreach ($projects as $project)
                                         <tr>
-                                            <td>{{$project->project_year}}</td>
-                                            <td>{{$project->project_name}}</td>
-                                            <td>{{$project->project_description}}</td>
-                                            <td>{{$project->project_type}}</td>
+                                            <th scope="row" class="col-1">{{$project->project_year}}</td>
+                                            <td class="col-2">{{$project->project_name}}</td>
+                                            <td class="col-6 text-truncate">{{$project->project_description}}</td>
+                                            <td class="col-3">{{$project->project_type}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                         </table>
                     </div>
-                    
                     @endauth
                 </div>
             </div>

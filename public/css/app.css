@@ -10889,6 +10889,10 @@ a.text-dark:focus {
   }
 }
 
+body {
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3,
@@ -10896,7 +10900,8 @@ h4,
 h5,
 label,
 a,
-input {
+input,
+select {
   font-family: CircularStd, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -11030,13 +11035,33 @@ a.article:hover {
   max-height: 600px;
 }
 
-.fixed-head thead {
-  width: 97%;
+.table-fixed tbody {
+  max-height: 550px;
+  overflow-y: auto;
+  width: 100%;
 }
 
-.fixed-head tbody {
-  height: 600px;
-  overflow-y: auto;
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+}
+
+.table-fixed tbody td,
+.table-fixed tbody th,
+.table-fixed thead > tr > th {
+  float: left;
+  position: relative;
+}
+
+.table-fixed tbody td::after,
+.table-fixed tbody th::after,
+.table-fixed thead > tr > th::after {
+  content: "";
+  clear: both;
+  display: block;
 }
 
 #content {

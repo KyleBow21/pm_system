@@ -4,7 +4,9 @@
 
 use App\Project;
 use Faker\Generator as Faker;
+
 $autoIncrement = autoIncrement();
+
 $factory->define(Project::class, function (Faker $faker) use ($autoIncrement){
     $autoIncrement->next();
     return [

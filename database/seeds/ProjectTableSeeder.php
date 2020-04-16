@@ -21,6 +21,6 @@ class ProjectTableSeeder extends Seeder
         $p->save();
 
         // Call the project factory.
-        factory(App\Project::class, 10)->create();
+        factory(App\Project::class, 50)->create();
     }
 }
