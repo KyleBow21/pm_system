@@ -4,12 +4,14 @@
 
 use App\Project;
 use Faker\Generator as Faker;
-
-$factory->define(Project::class, function (Faker $faker) {
+$autoIncrement = autoIncrement();
+$factory->define(Project::class, function (Faker $faker) use ($autoIncrement){
+    $autoIncrement->next();
     return [
-        'project_name' => "PROJ".$faker->randomDigit,
+
+        'project_name' => "PROJ".$autoIncrement->current(),
         'project_year' => $faker->year,
-        'project_type' => 'Technical',
+        'project_type' => $faker->randomElement(['Technical', 'Research']),
         'project_description' => $faker->text(200),
         'user_id' => function() {
             return App\User::inRandomOrder()->first()->id;
@@ -19,3 +21,10 @@ $factory->define(Project::class, function (Faker $faker) {
         }
     ];
 });
+
+function autoIncrement()
+{
+    for ($i = 0; $i < 10; $i++) {
+        yield $i;
+    }
+}
