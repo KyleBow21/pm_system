@@ -27,7 +27,10 @@ class ModuleTableSeeder extends Seeder
         $m = new Module;
         $m->module_name = 'CSCM12 - Yet another module';
         $m->assignment_id = 1;
-        
+
         $m->save();
+
+        // Call the module factory.
+        factory(App\Module::class, 10)->create();
     }
 }

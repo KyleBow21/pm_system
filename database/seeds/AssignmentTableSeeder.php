@@ -15,5 +15,8 @@ class AssignmentTableSeeder extends Seeder
         $a = new Assignment;
         $a->assignment_name = "Project Marking System";
         $a->save();
+
+        // Call the assignment factory.
+        factory(App\Assignment::class, 10)->create();
     }
 }

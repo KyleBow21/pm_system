@@ -15,5 +15,8 @@ class SchemeTableSeeder extends Seeder
         $s->scheme_name = "MSc Advanced Software Technology";
         $s->module_id = 1;
         $s->save();
+
+        // Call the project factory.
+        factory(App\Scheme::class, 10)->create();
     }
 }

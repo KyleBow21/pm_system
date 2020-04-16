@@ -15,5 +15,8 @@ class MarksTableSeeder extends Seeder
         $m->mark_score = 90;
         $m->project_id = 1;
         $m->save();
+
+        // Call the marks factory.
+        factory(App\Marks::class, 10)->create();
     }
 }
