@@ -14,12 +14,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-    
+
                         <!-- Show if the user has no logged in -->
                         @guest
                             <h4>You must log-in to use this service!</h4>
                         @endguest
-    
+
                         <!-- Show if the user has logged in -->
                         @auth
                         @foreach ($modules as $module)
@@ -39,12 +39,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-    
+
                         <!-- Show if the user has no logged in -->
                         @guest
                             <h4>You must log-in to use this service!</h4>
                         @endguest
-    
+
                         <!-- Show if the user has logged in -->
                         @auth
                         @foreach ($assignments as $assignment)
@@ -53,7 +53,7 @@
                         @endauth
                     </div>
                 </div>
-                
+
             </div>
         </div>
         </div>
@@ -71,21 +71,21 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-    
+
                         <!-- Show if the user has no logged in -->
                         @guest
                             <h4>You must log-in to use this service!</h4>
                         @endguest
-    
+
                         <!-- Show if the user has logged in -->
                         @auth
                         @foreach ($projects as $project)
-                            <li>{{ $project->project_name }} <i data-feather="chevron-right"></i></li>
+                            <li onclick="document.location='projects/{{$project->id}}'">{{ $project->project_name }} <i data-feather="chevron-right"></i></li>
                         @endforeach
                         @endauth
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="card">
@@ -97,12 +97,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-    
+
                         <!-- Show if the user has no logged in -->
                         @guest
                             <h4>You must log-in to use this service!</h4>
                         @endguest
-    
+
                         <!-- Show if the user has logged in -->
                         @auth
                         @foreach ($marks as $mark)
@@ -111,7 +111,7 @@
                         @endauth
                     </div>
                 </div>
-                
+
             </div>
         </div>
         </div>
