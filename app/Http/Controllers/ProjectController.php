@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Project;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -55,7 +56,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $p = DB::table('projects')->where('id', '=', $id)->get();
+        return view('projects.show')->with('projects', $p);
     }
 
     /**
