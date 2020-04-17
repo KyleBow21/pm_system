@@ -56,8 +56,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $p = DB::table('projects')->where('id', '=', $id)->get();
-        return view('projects.show')->with('projects', $p);
+        $project = Project::findOrFail($id);
+        return view('projects.show')->with('project', $project);
     }
 
     /**
