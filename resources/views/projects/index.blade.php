@@ -39,7 +39,7 @@
                             @if(Auth::user()->role == "Admin")
                             <div class="col-2">
                                 <label for="">Admin Controls</label>
-                                <button type="submit" class="form-control btn btn-primary" id="buttonCreateProject">Create Project</button>
+                                <button type="submit" class="form-control btn btn-primary" id="buttonCreateProject" onclick="document.location='{{route('projects.create')}}'" > Create Project</button>
                             </div>
                             @endif
                         </div>

@@ -16,11 +16,6 @@
 
                     You are logged in and this is projects create page!
 
-                    <ul>
-                        @foreach ($projects as $project)
-                            <li>{{ $project->project_name }}</li>
-                        @endforeach
-                    </ul>
                 </div>
             </div>
         </div>
