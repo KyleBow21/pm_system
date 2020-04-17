@@ -36,31 +36,23 @@ class HomeController extends Controller
             $id = $user->id;
             // Use DD to dump everything associated with a variable
             // dd($id);
+            $usermodule = DB::table('Users')->where('id','=', $id)->get('module_id')->first();
+            $projects = DB::table('projects')->where('user_id', '=', $id)->get();
+            $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
+            $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
+            $marks = Marks::all();
+            $data = [
+                'modules'  => $modules,
+                'assignments'   => $assignments,
+                'projects' => $projects,
+                'marks' => $marks
+            ];
+            return view('home')->with($data);
         }
         else {
             // Will always return the user to the login page if they are not logged in (only applicable to the home page here!)
-            return view('login');            
+            return view('login');
         }
 
-//        $user = Auth::user();
-//        $id = Auth::id();
-//        $usermodule = DB::table('Users')->where('id','=', $id)->get('module_id')->first();
-//        $projects = DB::table('projects')->where('user_id', '=', $id)->get();
-//        $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
-//
-//        $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
-//        //$projects = Project::all();
-        //Temp fix till I get food.
-        $marks = Marks::all();
-        $modules = Module::all();
-        $assignments = Assignment::all();
-        $projects = Project::all();
-        $data = [
-            'modules'  => $modules,
-            'assignments'   => $assignments,
-            'projects' => $projects,
-            'marks' => $marks
-        ];
-        return view('home')->with($data);
     }
 }
