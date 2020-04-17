@@ -40,6 +40,42 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" required>
+                                    <option value="student" selected>Student</option>
+                                    <option value="staff">Staff</option>
+                                </select>
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="scheme" class="col-md-4 col-form-label text-md-right">{{ __('Scheme') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="scheme" id="scheme" class="form-control @error('scheme') is-invalid @enderror" required>
+                                    <!-- This will be generated from existing schemes in the database! -->
+                                    @foreach ($schemes as $scheme)
+                                        <option value="{{$scheme->id}}">{{$scheme->scheme_name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('scheme')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

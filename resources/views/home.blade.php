@@ -47,9 +47,7 @@
 
                         <!-- Show if the user has logged in -->
                         @auth
-                        @foreach ($assignments as $assignment)
-                            <li>{{ $assignment->assignment_name }} <i data-feather="chevron-right"></i></li>
-                        @endforeach
+                        
                         @endauth
                     </div>
                 </div>

@@ -21,8 +21,8 @@ Route::get('/', 'HomeController@index')->name('home');
 // TODO: Change the names of the controllers to match the naming conventions
 // ? Maps the default RESTful actions to each controller
 Route::resource('projects', 'ProjectController');
-Route::get('projects/create', 'ProjectController@create')->name('projects.create');
-Route::get('projects/{id}', 'ProjectController@show')->name('projects.show');
+// Route::get('projects/create', 'ProjectController@create')->name('projects.create');
+// Route::get('projects/{id}', 'ProjectController@show')->name('projects.show');
 Route::resource('modules', 'ModuleController');
 Route::resource('assignments', 'AssignmentController');
-Route::resource('marks', 'MarkController');
+// Route::resource('marks', 'MarkController');
