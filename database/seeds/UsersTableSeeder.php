@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         $u = new User();
         $u->name = "Ben Mora";
         $u->email = "mora@gmail.com";
-        $u->role = "Admin";
+        $u->role = "admin";
         $u->scheme_id = 1;
         $u->module_id = 1;
         $u->password = bcrypt('password');
@@ -23,10 +23,12 @@ class UsersTableSeeder extends Seeder
         $u = new User();
         $u->name = "Admin";
         $u->email = "admin@gmail.com";
-        $u->role = "Admin";
+        $u->role = "admin";
         $u->scheme_id = 2;
         $u->module_id = 2;
         $u->password = bcrypt('password');
         $u->save();
+
+        factory(App\User::class, 50)->create();
     }
 }
