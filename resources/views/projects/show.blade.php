@@ -14,11 +14,14 @@
                         </div>
                     @endif
 
-                    You are logged in and this is projects show page!
-
                     <ul>
                         @foreach ($projects as $project)
                             <li>{{ $project->project_name }}</li>
+                            <li>{{ $project->project_year }}</li>
+                            <li>{{ $project->project_type }}</li>
+                            <li>{{ $project->project_description }}</li>
+                            <li>{{ $project->user_id }}</li>
+                            <li>{{ $project->module_id }}</li>
                         @endforeach
                     </ul>
                 </div>

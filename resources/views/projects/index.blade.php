@@ -56,9 +56,9 @@
                             </thead>
                                 <tbody>
                                     @foreach ($projects as $project)
-                                        <tr>
-                                            <th scope="row" class="col-1">{{$project->project_year}}</td>
-                                            <td class="col-2">{{$project->project_name}}</td>
+                                        <tr onclick="document.location='projects/{{$project->id}}'" style="cursor:hand">
+                                            <th scope="row" class="col-1" >{{$project->project_year}}</td>
+                                            <td class="col-2" >{{$project->project_name}}</td>
                                             <td class="col-6 text-truncate">{{$project->project_description}}</td>
                                             <td class="col-3">{{$project->project_type}}</td>
                                         </tr>
