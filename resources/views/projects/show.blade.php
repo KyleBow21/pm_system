@@ -31,18 +31,18 @@
                             <h5>Project Year: {{  $project->project_year  }}</h5>
                         </div>
                         <div class="col-md-3">
-                            <h5>Current Capacity: 0 / {{$project->capacity}}</h5>
+                            <!-- Capacity will be calculated by counting the number of users for each project and compared against its rated capacity. -->
+                            <h5>Current Capacity: 0 / {{ $project->capacity }}</h5>
                         </div>
                     </div>
 
-                    <!-- Where the project description is shown, maybe we could have a PDF viewer here too for lecturers that already have a document for their project? -->
+                    <!-- Where the project description is shown. When file uploads are working, maybe switch this to a PDF viewer? -->
                     <div class="row text-justify mt-5">
                         <div class="col-md-12">
                             <h3>Project Description</h3>
                             <hr>
-                            <div class="scrollable">
-                                <p>{{$project->project_description}}</p>
-                            </div>
+                            <!-- <div class="scrollable h-100" id="editor"></div> -->
+                            <p>{{ $project->project_description }}</p>
                         </div>
                     </div>
                 </div>

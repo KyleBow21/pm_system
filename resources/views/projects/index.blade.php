@@ -36,10 +36,10 @@
                             </div>
 
                             <!-- "if" directive can be used to display content per user, good for authorisation -->
-                            @if(Auth::user()->role == "Admin")
+                            @if(Auth::user()->role == "admin")
                             <div class="col-2">
                                 <label for="">Admin Controls</label>
-                                <button type="submit" class="form-control btn btn-primary" id="buttonCreateProject" onclick="document.location='{{route('projects.create')}}'" > Create Project</button>
+                                <a href="{{ route('projects.create') }}" type="button" class="form-control btn btn-primary" id="buttonCreateProject"> Create Project</a>
                             </div>
                             @endif
                         </div>
