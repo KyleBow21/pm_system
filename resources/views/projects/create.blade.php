@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
         <div class="col-md-12 px-5">
             <div class="card">
-            <div class="card-header">Create Project - {{Auth::user()->name}}</div>
+            <div class="card-header">
+                Create Project - {{Auth::user()->name}}
+            </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -33,12 +35,12 @@
 
                                     <div class="form-group col-2">
                                         <label for="projectYear">Project Year</label>
-                                        <input class="form-control" type="text" id="projectYear">
+                                        <input class="form-control" type="text" id="projectYear" placeholder="2021...">
                                     </div>
 
                                     <div class="form-group col-1">
                                         <label for="projectCapacity">Project Capacity</label>
-                                        <input class="form-control" type="text" id="projectCapacity">
+                                        <input class="form-control" type="text" id="projectCapacity" placeholder="15...">
                                     </div>
         
                                     <!-- "if" directive can be used to display content per user, good for authorisation -->
@@ -49,7 +51,19 @@
                                     </div>
                                     @endif
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the table..."></textarea>
+                                    </div>
+                                </div>
                             </form>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <h5>Preview</h5>
+                            <hr>
                         </div>
                     </div>
 
