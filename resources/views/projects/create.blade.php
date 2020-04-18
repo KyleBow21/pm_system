@@ -18,52 +18,49 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="">
+                            <form>
+                            {!! Form::open(['action' => 'ProjectController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                 <div class="form-row">
                                     <div class="form-group col">
                                         <label for="projectFilterName">Project Name</label>
-                                        <input class="form-control" type="text" id="projectName" placeholder="Implement algorithms in C++...">
+                                        {{Form::text('projectName', '', ['class' => 'form-control', 'placeholder' => 'Implementing algorithms in C...'])}}
                                     </div>
                                     <div class="form-group col-2">
                                         <label for="projectType">Project Type</label>
-                                        <select class="form-control" name="" id="projectType">
-                                            <option selected>N/A</option>
-                                            <option>Technical</option>
-                                            <option>Research</option>
-                                        </select>
+                                        {{Form::select('projectType', ['technical' => 'Technical', 'research' => 'Research'], 'technical', ['class' => 'form-control'])}}
                                     </div>
 
                                     <div class="form-group col-2">
                                         <label for="projectYear">Project Year</label>
-                                        <input class="form-control" type="text" id="projectYear" placeholder="2021...">
+                                        {{Form::text('projectYear', '', ['class' => 'form-control', 'placeholder' => '2021...'])}}
                                     </div>
 
                                     <div class="form-group col-1">
                                         <label for="projectCapacity">Capacity</label>
-                                        <input class="form-control" type="text" id="projectCapacity" placeholder="15...">
+                                        {{Form::text('projectCapacity', '', ['class' => 'form-control', 'placeholder' => '15...'])}}
                                     </div>
 
                                     <div class="form-group col-2">
                                         <label for="projectCapacity">Files</label>
-                                        <label class="btn btn-primary form-control" for="fileSelector">
-                                            <input id="fileSelector" type="file" class="d-none">
-                                            Upload File
-                                        </label>
+                                        <!-- Currently visually bugged, will fix later. -->
+                                        {{ Form::file('pdf', ['class' => 'form-control btn btn-primary'])}}
                                     </div>
         
                                     <!-- "if" directive can be used to display content per user, good for authorisation -->
                                     @if(Auth::user()->role == "admin")
                                     <div class="form-group col-1">
-                                        <label for="buttonCreateProject">Upload</label>
-                                        <a href="{{ route('projects.store') }}" type="submit" class="form-control btn btn-success" id="buttonSubmitProject"><i data-feather="check-circle"></i></a>                                   
+                                        <label for="buttonCreateProject">Submit</label>
+                                        {{ Form::submit('Submit', ['class' => 'btn btn-success'])}}                              
                                     </div>
                                     @endif
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col">
-                                        <textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>
+                                        {{ Form::textarea('projectDescription', '', ['class' => 'form-control', 'placeholder' => 'Write a short description of the project here...']) }}
+                                        <!--<textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>-->
                                     </div>
                                 </div>
+                            {!! Form::close() !!}
                             </form>
                         </div>
                     </div>
