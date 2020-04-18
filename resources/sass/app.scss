@@ -13,7 +13,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-    min-height: 100vh;
+    height: 100%;
 }
 
 // Custom styles
@@ -190,7 +190,8 @@ a.article:hover {
 
 #content {
     width: calc(100% - 250px);
-    min-height: 100%;
+    height: calc(100% - 200px);
+    margin-bottom: 100px;
     transition: all 0.3s;
     position: absolute;
     top: 0;
@@ -225,7 +226,7 @@ a.article:hover {
 }
 
 #project-table {
-    max-height: 800px;
+    // max-height: 800px;
 }
 
 .feather {

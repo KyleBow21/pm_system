@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
         <div class="col-md-12 px-5">
-            <div class="card">
+            <div class="card h-100">
             <div class="card-header">Projects - {{$project->project_name}}</div>
 
                 <div class="card-body">
@@ -35,12 +35,13 @@
                         </div>
                     </div>
 
+                    <!-- Where the project description is shown, maybe we could have a PDF viewer here too for lecturers that already have a document for their project? -->
                     <div class="row text-justify mt-5">
                         <div class="col-md-12">
                             <h3>Project Description</h3>
                             <hr>
                             <div class="scrollable">
-                            <p>{{$project->project_description}}</p>
+                                <p>{{$project->project_description}}</p>
                             </div>
                         </div>
                     </div>

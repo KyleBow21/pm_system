@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid" id="dashboard">
-    <div class="row justify-content-center">
+<div class="container-fluid h-100" id="dashboard">
+    <div class="row justify-content-center h-100">
         <div class="col-md-12 px-5">
             <div class="card" id="project-table">
                 <div class="card-header">Projects Overview</div>

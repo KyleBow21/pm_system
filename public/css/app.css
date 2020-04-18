@@ -10890,7 +10890,7 @@ a.text-dark:focus {
 }
 
 body {
-  min-height: 100vh;
+  height: 100%;
 }
 
 h1,
@@ -11066,7 +11066,8 @@ a.article:hover {
 
 #content {
   width: calc(100% - 250px);
-  min-height: 100%;
+  height: calc(100% - 200px);
+  margin-bottom: 100px;
   transition: all 0.3s;
   position: absolute;
   top: 0;
@@ -11097,10 +11098,6 @@ a.article:hover {
 #dashboard li:hover {
   background: rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-}
-
-#project-table {
-  max-height: 800px;
 }
 
 .feather {
