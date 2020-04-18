@@ -16,6 +16,7 @@ class ProjectTableSeeder extends Seeder
         $p->project_year = "2020";
         $p->project_type = "Technical";
         $p->project_description = "This is description of Project 1";
+        $p->capacity = 15;
         $p->user_id = 1;
         $p->module_id =  1;
         $p->save();

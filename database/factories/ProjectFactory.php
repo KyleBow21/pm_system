@@ -15,6 +15,7 @@ $factory->define(Project::class, function (Faker $faker) use ($autoIncrement){
         'project_year' => $faker->year,
         'project_type' => $faker->randomElement(['Technical', 'Research']),
         'project_description' => $faker->text(200),
+        'capacity' => $faker->numberBetween(1, 50),
         'user_id' => function() {
             return App\User::inRandomOrder()->first()->id;
         },

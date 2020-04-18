@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('project_year');
             $table->string('project_type');
             $table->longText('project_description');
+            $table->integer('capacity')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('module_id');
             $table->timestamps();
