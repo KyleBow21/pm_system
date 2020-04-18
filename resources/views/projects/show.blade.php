@@ -43,7 +43,7 @@
                             <hr>
                             <!-- <div class="scrollable h-100" id="editor"></div> -->
 {{--                            <p>{{ $project->project_description }}</p>--}}
-                            <embed src="{{ asset('storage/test.pdf') }}" width=100% height="500" alt="pdf" />
+                            <embed class="embed-responsive w-100 h-100" src="{{ asset('storage/test.pdf') }}" alt="pdf" />
                         </div>
                     </div>
                 </div>

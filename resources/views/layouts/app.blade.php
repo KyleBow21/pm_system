@@ -26,6 +26,10 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
+
+    <!-- Progress bar plugin -->
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
 </head>
 <body>
     <div id="app" class="wrapper">
@@ -71,16 +75,30 @@
     </script>
 
     <script>
+
+        // Show the progress bar 
+        NProgress.start();
+
+        // Increase randomly
+        var interval = setInterval(function() { NProgress.inc(); }, 1000);
+
+        $(window).on('load', () => {
+            clearInterval(interval);
+            NProgress.done();
+        });
+
+        // Trigger bar when exiting the page
+        $(window).on('unload', () => {
+            NProgress.start();
+        });
+
+    </script>
+
+    <script>
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
-
-            ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .catch( error => {
-                    console.error( error );
-                });
         });
     </script>
 </body>

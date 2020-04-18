@@ -39,21 +39,29 @@
                                     </div>
 
                                     <div class="form-group col-1">
-                                        <label for="projectCapacity">Project Capacity</label>
+                                        <label for="projectCapacity">Capacity</label>
                                         <input class="form-control" type="text" id="projectCapacity" placeholder="15...">
+                                    </div>
+
+                                    <div class="form-group col-2">
+                                        <label for="projectCapacity">Files</label>
+                                        <label class="btn btn-primary form-control" for="fileSelector">
+                                            <input id="fileSelector" type="file" class="d-none">
+                                            Upload File
+                                        </label>
                                     </div>
         
                                     <!-- "if" directive can be used to display content per user, good for authorisation -->
                                     @if(Auth::user()->role == "admin")
-                                    <div class="col-2">
-                                        <label for="">Admin Controls</label>
-                                        <a href="{{ route('projects.create') }}" type="button" class="form-control btn btn-primary" id="buttonCreateProject"> Create Project</a>
+                                    <div class="form-group col-1">
+                                        <label for="buttonCreateProject">Upload</label>
+                                        <a href="{{ route('projects.store') }}" type="submit" class="form-control btn btn-success" id="buttonSubmitProject"><i data-feather="check-circle"></i></a>                                   
                                     </div>
                                     @endif
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col">
-                                        <textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the table..."></textarea>
+                                        <textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -64,6 +72,7 @@
                         <div class="col-md-12">
                             <h5>Preview</h5>
                             <hr>
+                            <p>Maybe we could put some sort of preview here?</p>
                         </div>
                     </div>
 
