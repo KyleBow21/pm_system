@@ -41,7 +41,7 @@ class HomeController extends Controller
             $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
 
             // $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
-            
+
             $marks = Marks::all();
             $data = [
                 'modules'  => $modules,
