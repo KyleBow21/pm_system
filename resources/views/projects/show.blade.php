@@ -22,17 +22,17 @@
                     <hr>
                     <div class="row mt-5">
                         <div class="col-md-3">
-                            <h5>Project Name: <span>{{ $project->project_name }}</span></h5>
+                            <h5><b>Project Name:</b> {{ $project->project_name }}</h5>
                         </div>
                         <div class="col-md-3">
-                            <h5>Project Type: {{  $project->project_type  }}</h5>
+                            <h5><b>Project Type:</b> {{  $project->project_type  }}</h5>
                         </div>
                         <div class="col-md-3">
-                            <h5>Project Year: {{  $project->project_year  }}</h5>
+                            <h5><b>Project Year:</b> {{  $project->project_year  }}</h5>
                         </div>
                         <div class="col-md-3">
                             <!-- Capacity will be calculated by counting the number of users for each project and compared against its rated capacity. -->
-                            <h5>Current Capacity: 0 / {{ $project->capacity }}</h5>
+                            <h5><b>Current Capacity:</b> 0 / {{ $project->project_capacity }}</h5>
                         </div>
                     </div>
 
@@ -41,8 +41,14 @@
                         <div class="col-md-12">
                             <h3>Project Description</h3>
                             <hr>
-                            <!-- <div class="scrollable h-100" id="editor"></div> -->
-{{--                            <p>{{ $project->project_description }}</p>--}}
+                                <p>{{ $project->project_description }}</p>
+                        </div>
+                    </div>
+                    <!-- Make this section scrollable if there isn't enough space to display normally -->
+                    <div class="row text-justify mt-5">
+                        <div class="col-md-12">
+                            <h3>Project Attachment</h3>
+                            <hr>
                             <embed class="embed-responsive w-100 h-100" src="{{ asset('storage/test.pdf') }}" alt="pdf" />
                         </div>
                     </div>

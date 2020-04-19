@@ -13,12 +13,11 @@
 
 // TODO: Tie up all routes to at least the projects and assignments pages
 // ! Auth must be implemented
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 
-// TODO: Change the names of the controllers to match the naming conventions
 // ? Maps the default RESTful actions to each controller
 Route::resource('projects', 'ProjectController');
 // Route::get('projects/create', 'ProjectController@create')->name('projects.create');

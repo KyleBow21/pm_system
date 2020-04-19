@@ -18,39 +18,27 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <form>
                             {!! Form::open(['action' => 'ProjectController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                 <div class="form-row">
                                     <div class="form-group col">
-                                        <label for="projectFilterName">Project Name</label>
-                                        {{Form::text('projectName', '', ['class' => 'form-control', 'placeholder' => 'Implementing algorithms in C...'])}}
+                                        {{Form::text('projectName', '', ['class' => 'form-control', 'placeholder' => 'Project Title...'])}}
                                     </div>
                                     <div class="form-group col-2">
-                                        <label for="projectType">Project Type</label>
-                                        {{Form::select('projectType', ['technical' => 'Technical', 'research' => 'Research'], 'technical', ['class' => 'form-control'])}}
+                                        {{Form::select('projectType', ['n/a' => 'Project Type...', 'Technical' => 'Technical', 'Research' => 'Research'], 'technical', ['class' => 'form-control'])}}
                                     </div>
 
                                     <div class="form-group col-2">
-                                        <label for="projectYear">Project Year</label>
-                                        {{Form::text('projectYear', '', ['class' => 'form-control', 'placeholder' => '2021...'])}}
+                                        {{Form::text('projectYear', '', ['class' => 'form-control', 'placeholder' => 'Project Year...'])}}
                                     </div>
 
                                     <div class="form-group col-1">
-                                        <label for="projectCapacity">Capacity</label>
-                                        {{Form::text('projectCapacity', '', ['class' => 'form-control', 'placeholder' => '15...'])}}
-                                    </div>
-
-                                    <div class="form-group col-2">
-                                        <label for="projectCapacity">Files</label>
-                                        <!-- Currently visually bugged, will fix later. -->
-                                        {{ Form::file('pdf', ['class' => 'form-control btn btn-primary'])}}
+                                        {{Form::text('projectCapacity', '', ['class' => 'form-control', 'placeholder' => 'Capacity...'])}}
                                     </div>
         
                                     <!-- "if" directive can be used to display content per user, good for authorisation -->
                                     @if(Auth::user()->role == "admin")
                                     <div class="form-group col-1">
-                                        <label for="buttonCreateProject">Submit</label>
-                                        {{ Form::submit('Submit', ['class' => 'btn btn-success'])}}                              
+                                        {{ Form::submit('Submit', ['class' => 'btn btn-success form-control'])}}                              
                                     </div>
                                     @endif
                                 </div>
@@ -60,8 +48,12 @@
                                         <!--<textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>-->
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        {{ Form::file('pdf', ['class' => 'form-control'])}}
+                                    </div>
+                                </div>
                             {!! Form::close() !!}
-                            </form>
                         </div>
                     </div>
 

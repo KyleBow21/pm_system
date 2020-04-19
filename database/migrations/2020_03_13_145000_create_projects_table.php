@@ -22,14 +22,14 @@ class CreateProjectsTable extends Migration
             $table->string('project_capacity')->nullable();
             $table->string('project_attachment')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('module_id');
+            // $table->unsignedBigInteger('module_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')
             ->on('users')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('module_id')->references('id')
-            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('module_id')->references('id')
+            // ->on('modules')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

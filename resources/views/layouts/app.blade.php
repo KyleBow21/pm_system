@@ -66,6 +66,14 @@
         <main class="" id="content">
             @include('inc.navbar')
             <div class="py-4"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @include('inc.messages')
+                    </div>                    
+                </div>
+            </div>
+            
             @yield('content')
         </main>
     </div>
@@ -75,13 +83,13 @@
     </script>
 
     <script>
-
-        // Show the progress bar 
+        // Start the progress bar 
         NProgress.start();
 
         // Increase randomly
-        var interval = setInterval(function() { NProgress.inc(); }, 1000);
+        var interval = setInterval(() => { NProgress.inc(); }, 1000);
 
+        // Stop the progress bar once the page has loaded
         $(window).on('load', () => {
             clearInterval(interval);
             NProgress.done();
@@ -91,7 +99,6 @@
         $(window).on('unload', () => {
             NProgress.start();
         });
-
     </script>
 
     <script>

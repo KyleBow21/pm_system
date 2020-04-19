@@ -18,7 +18,7 @@ class ProjectTableSeeder extends Seeder
         $p->project_description = "This is description of Project 1";
         $p->project_capacity = 15;
         $p->user_id = 1;
-        $p->module_id =  1;
+        // $p->module_id =  1;
         $p->save();
 
         // Call the project factory.

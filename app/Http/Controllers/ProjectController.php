@@ -46,14 +46,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         // Validate the request so we know that the user actually wrote something
         // The PDF part will have it's name changed to something that makes more sense
         $this->validate($request, [
             'projectName' => 'required',
             'projectType' => 'required',
-            'projectYear' => 'required',
-            'projectCapacity' => 'required',
+            'projectYear' => 'required|integer',
+            'projectCapacity' => 'required|integer',
             'pdf' => 'nullable|max:1999'
         ]);
 
@@ -76,7 +75,7 @@ class ProjectController extends Controller
             $fileNameToStore = str_replace(' ', '', $fileNameToStore);
             $path = $request->file('pdf')->storeAs('public/docs', $fileNameToStore);
         } else {
-            // This is from old code, will rectify.
+            // This is from old code, will refine.
             $fileNameToStore = 'nofile.pdf';
         }
 
@@ -90,8 +89,7 @@ class ProjectController extends Controller
         $project->user_id = Auth::user()->id;
         $project->project_attachment = $fileNameToStore;
         $project->save();
-        dd($project);
-
+        
         return redirect('/projects/'.$project->id)->with('success', 'Project Created!');
     }
 

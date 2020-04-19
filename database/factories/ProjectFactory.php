@@ -18,10 +18,10 @@ $factory->define(Project::class, function (Faker $faker) use ($autoIncrement){
         'project_capacity' => $faker->numberBetween(1, 50),
         'user_id' => function() {
             return App\User::inRandomOrder()->first()->id;
-        },
-        'module_id' => function() {
-            return App\Module::inRandomOrder()->first()->id;
         }
+        // 'module_id' => function() {
+        //    return App\Module::inRandomOrder()->first()->id;
+        //}
     ];
 });
 
