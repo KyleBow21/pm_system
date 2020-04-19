@@ -64,11 +64,14 @@
                                             <td class="col-6 text-truncate">{{$project->project_description}}</td>
                                             <td class="col-2">{{$project->project_type}}</td>
                                             @if($project->user_id == Auth::user()->id)
-                                                
                                                 <td class="col-1">
-                                                    {!! Form::open(['action' => ['ProjectController@destroy', $project->id], 'method' => 'POST']) !!}
-                                                    {{ Form::hidden('_method', 'DELETE') }}
-                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block btn-sm']) }}
+                                                    <div class="btn-group" role="group">
+                                                    <a href="{{ route('projects.edit', ['project' => $project]) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                        {!! Form::open(['action' => ['ProjectController@destroy', $project->id], 'method' => 'POST']) !!}
+                                                            {{ Form::hidden('_method', 'DELETE') }}
+                                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}
+                                                        {!! Form::close() !!}
+                                                    </div>
                                                 </td>
                                             @else
                                                 <td class="col-1">&nbsp;</td>

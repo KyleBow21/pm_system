@@ -114,7 +114,17 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Redirect the user to the project creation page, but with fields already filled in.
+        $project = Project::findOrFail($id);
+
+        // Check if the editing user is the one who made the project.
+        if(Auth::user()->id !== $project->user_id) {
+            // Send 'em back to where they belong!
+            return redirect('/projects')->with('error', 'Unauthorized!');
+        } else {
+            // Go to the project edit view with the project data.
+            return view('projects.edit')->with('project', $project);
+        }        
     }
 
     /**
@@ -126,7 +136,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Save the edits that have been made to the project
     }
 
     /**
@@ -137,10 +147,11 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
+        // Find the project that was selected for deletion
         $project = Project::findOrFail($id);
 
         // Check if a user is logged in and has the permissions to delete
-        if(Auth::user()->id !== $project->user_id) {
+        if(Auth::user()->id !== $project->user_id || Auth::user()->role === "super_admin") {
             return redirect('/projects')->with('error', 'Unauthorized');
         } else {
             // Delete the project and redirect back to the projects index page.
