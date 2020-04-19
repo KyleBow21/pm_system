@@ -79,13 +79,14 @@ class ProjectController extends Controller
             $fileNameToStore = 'nofile.pdf';
         }
 
-        // Okay, time to make the project to store in the database
+        // Okay, time to make the project instance to store in the database
         $project = new Project;
         $project->project_name = $request->input('projectName');
         $project->project_year = $request->input('projectYear');
         $project->project_type = $request->input('projectType');
         $project->project_description = $request->input('projectDescription');
         $project->project_capacity = $request->input('projectCapacity');
+        // Get the current user ID, user must be logged in for this to work!
         $project->user_id = Auth::user()->id;
         $project->project_attachment = $fileNameToStore;
         $project->save();
@@ -136,6 +137,15 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        // Check if a user is logged in and has the permissions to delete
+        if(Auth::user()->id !== $project->user_id) {
+            return redirect('/projects')->with('error', 'Unauthorized');
+        } else {
+            // Delete the project and redirect back to the projects index page.
+            $project->delete();
+            return redirect('/projects')->with('success', 'Project '.$project->project_name.' deleted');
+        }
     }
 }

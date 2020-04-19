@@ -23,6 +23,7 @@
                     <form action="">
                         <div class="form-row">
                             <div class="form-group col">
+                                <!-- TODO: Make the search controls work -->
                                 <label for="projectFilterName">Search</label>
                                 <input class="form-control" type="text" id="projectFilterName" placeholder="Search...">
                             </div>
@@ -51,16 +52,27 @@
                                     <th scope="col" class="col-1">Project Year</th>
                                     <th scope="col" class="col-2">Project Name</th>
                                     <th scope="col" class="col-6">Project Description</th>
-                                    <th scope="col" class="col-3">Project Type</th>
+                                    <th scope="col" class="col-2">Project Type</th>
+                                    <th scope="col" class="col-1">Controls</th>
                                 </tr>
                             </thead>
                                 <tbody>
                                     @foreach ($projects as $project)
-                                        <tr onclick="document.location='projects/{{$project->id}}'" style="cursor:hand">
+                                        <tr id="{{$project->id}}" onclick="document.location='projects/{{$project->id}}'" style="cursor:hand">
                                             <th scope="row" class="col-1" >{{$project->project_year}}</td>
                                             <td class="col-2" >{{$project->project_name}}</td>
                                             <td class="col-6 text-truncate">{{$project->project_description}}</td>
-                                            <td class="col-3">{{$project->project_type}}</td>
+                                            <td class="col-2">{{$project->project_type}}</td>
+                                            @if($project->user_id == Auth::user()->id)
+                                                
+                                                <td class="col-1">
+                                                    {!! Form::open(['action' => ['ProjectController@destroy', $project->id], 'method' => 'POST']) !!}
+                                                    {{ Form::hidden('_method', 'DELETE') }}
+                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block btn-sm']) }}
+                                                </td>
+                                            @else
+                                                <td class="col-1">&nbsp;</td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

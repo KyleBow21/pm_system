@@ -95,7 +95,8 @@
         });
 
         // Trigger bar when exiting the page
-        $(window).on('unload', () => {
+        $(window).on('beforeunload', () => {
+            console.log("Unloading!");
             NProgress.start();
         });
     </script>

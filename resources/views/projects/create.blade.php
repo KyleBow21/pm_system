@@ -28,11 +28,13 @@
                                     </div>
 
                                     <div class="form-group col-2">
-                                        {{Form::text('projectYear', '', ['class' => 'form-control', 'placeholder' => 'Project Year...'])}}
+                                        <!-- Probably should use a date picker instead? -->
+                                        {{Form::text('projectYear', '', ['class' => 'form-control', 'placeholder' => 'Project Year...', 'maxlength' => '4'])}}
                                     </div>
 
                                     <div class="form-group col-1">
-                                        {{Form::text('projectCapacity', '', ['class' => 'form-control', 'placeholder' => 'Capacity...'])}}
+                                        <!-- Max length limited to double digits -->
+                                        {{Form::text('projectCapacity', '', ['class' => 'form-control', 'placeholder' => 'Capacity...', 'maxlength' => '2'])}}
                                     </div>
         
                                     <!-- "if" directive can be used to display content per user, good for authorisation -->
