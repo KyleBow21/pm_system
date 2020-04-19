@@ -73,7 +73,6 @@
                     </div>                    
                 </div>
             </div>
-            
             @yield('content')
         </main>
     </div>

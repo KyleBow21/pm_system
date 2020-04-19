@@ -24,7 +24,7 @@
                                         {{Form::text('projectName', '', ['class' => 'form-control', 'placeholder' => 'Project Title...'])}}
                                     </div>
                                     <div class="form-group col-2">
-                                        {{Form::select('projectType', ['n/a' => 'Project Type...', 'Technical' => 'Technical', 'Research' => 'Research'], 'technical', ['class' => 'form-control'])}}
+                                        {{Form::select('projectType', ['Technical' => 'Technical', 'Research' => 'Research'], null, ['class' => 'form-control', 'placeholder' => 'Project Type...'])}}
                                     </div>
 
                                     <div class="form-group col-2">
