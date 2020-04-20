@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Project;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller
 {
-    public function __construct() {
-        // This 
-        // $this->middleware('auth', ['except' => ['index']]);
+    public function __construct() 
+    {
+        // Apply auth requirement    
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +37,12 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        if(Gate::allows('create-project')) {
+            return view('projects.create');
+        } else {
+            return redirect('/')->with('error', 'Unauthorized');
+        }
+        
     }
 
     /**
@@ -117,14 +124,18 @@ class ProjectController extends Controller
         // Redirect the user to the project creation page, but with fields already filled in.
         $project = Project::findOrFail($id);
 
-        // Check if the editing user is the one who made the project.
-        if(Auth::user()->id !== $project->user_id) {
-            // Send 'em back to where they belong!
-            return redirect('/projects')->with('error', 'Unauthorized!');
+        // Check if the user is allowed to edit projects
+        if(Gate::allows('edit-project')) {
+            if(Auth::user()->id !== $project->user_id) {
+                // Send 'em back to where they belong!
+                return redirect('/projects')->with('error', 'Unauthorized!');
+            } else {
+                // Go to the project edit view with the project data.
+                return view('projects.edit')->with('project', $project);
+            }    
         } else {
-            // Go to the project edit view with the project data.
-            return view('projects.edit')->with('project', $project);
-        }        
+            return redirect('/projects')->with('error', 'Unauthorized!');
+        }
     }
 
     /**
@@ -136,6 +147,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO: Add the auth gate for this!
         // Save the edits that have been made to the project
 
         // Validate the request so we know that the user actually wrote something
@@ -179,7 +191,6 @@ class ProjectController extends Controller
         $project->project_description = $request->input('projectDescription');
         $project->project_capacity = $request->input('projectCapacity');
         $project->project_attachment = $fileNameToStore;
-        // dd($project);
         $project->update();
         
         return redirect('/projects/'.$id)->with('success', 'Project Updated!');
@@ -197,13 +208,18 @@ class ProjectController extends Controller
         // Find the project that was selected for deletion
         $project = Project::findOrFail($id);
 
-        // Check if a user is logged in and has the permissions to delete
-        if(Auth::user()->id !== $project->user_id || Auth::user()->role === "super_admin") {
-            return redirect('/projects')->with('error', 'Unauthorized');
+        // Check if user is allowed to delete projects
+        if(Gate::allows('delete-project')) {
+            // Check if a user is logged in and owns the project
+            if(Auth::user()->id !== $project->user_id) {
+                return redirect('/projects')->with('error', 'Unauthorized');
+            } else {
+                // Delete the project and redirect back to the projects index page.
+                $project->delete();
+                return redirect('/projects')->with('success', 'Project '.$project->project_name.' deleted');
+            }
         } else {
-            // Delete the project and redirect back to the projects index page.
-            $project->delete();
-            return redirect('/projects')->with('success', 'Project '.$project->project_name.' deleted');
-        }
+            return redirect('/projects')->with('error', 'Unauthorized');
+        }        
     }
 }
