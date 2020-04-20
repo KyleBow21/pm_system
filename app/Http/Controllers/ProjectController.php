@@ -137,6 +137,52 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         // Save the edits that have been made to the project
+
+        // Validate the request so we know that the user actually wrote something
+        // The PDF part will have it's name changed to something that makes more sense
+        $this->validate($request, [
+            'projectName' => 'required',
+            'projectType' => 'required',
+            'projectYear' => 'required|integer',
+            'projectCapacity' => 'required|integer',
+            'pdf' => 'nullable|max:1999'
+        ]);
+
+        // Upload the file (probably a much better way to do this, but it works!)
+        if($request->hasFile('pdf')) {
+            // Here we will generate an appropriate name for the file to be stored with
+            // Get file name
+            $fileNameWithExt = $request->file('pdf')->getClientOriginalName();
+
+            // Get filename without extension
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            // Get the file extension
+            $extension = $request->file('pdf')->getClientOriginalExtension();
+
+            // Create filename that we will store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+            // Store the file
+            $fileNameToStore = str_replace(' ', '', $fileNameToStore);
+            $path = $request->file('pdf')->storeAs('public/docs', $fileNameToStore);
+        } else {
+            // This is from old code, will refine.
+            $fileNameToStore = 'nofile.pdf';
+        }
+
+        // Okay, time to make the project instance to store in the database
+        $project = new Project;
+        $project->project_name = $request->input('projectName');
+        $project->project_year = $request->input('projectYear');
+        $project->project_type = $request->input('projectType');
+        $project->project_description = $request->input('projectDescription');
+        $project->project_capacity = $request->input('projectCapacity');
+        $project->project_attachment = $fileNameToStore;
+        $project->update();
+        
+        return redirect('/projects/'.$id)->with('success', 'Project Updated!');
+
     }
 
     /**
