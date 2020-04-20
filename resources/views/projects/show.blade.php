@@ -49,7 +49,8 @@
                         <div class="col-md-12">
                             <h3>Project Attachment</h3>
                             <hr>
-                            <embed class="embed-responsive w-100 h-100" src="{{ asset('storage/test.pdf') }}" alt="pdf" />
+                            <!-- Need to make this all responsive, kinda broke at the moment but it does display the attachment -->
+                            <embed class="embed-responsive w-100 h-100" src="/storage/docs/{{$project->project_attachment}}" alt="pdf" />
                         </div>
                     </div>
                 </div>

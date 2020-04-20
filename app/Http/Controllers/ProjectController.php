@@ -148,6 +148,8 @@ class ProjectController extends Controller
             'pdf' => 'nullable|max:1999'
         ]);
 
+        dd($request);
+
         // Upload the file (probably a much better way to do this, but it works!)
         if($request->hasFile('pdf')) {
             // Here we will generate an appropriate name for the file to be stored with
@@ -172,13 +174,14 @@ class ProjectController extends Controller
         }
 
         // Okay, time to make the project instance to store in the database
-        $project = new Project;
+        $project = Project::find($id);
         $project->project_name = $request->input('projectName');
         $project->project_year = $request->input('projectYear');
         $project->project_type = $request->input('projectType');
         $project->project_description = $request->input('projectDescription');
         $project->project_capacity = $request->input('projectCapacity');
         $project->project_attachment = $fileNameToStore;
+        // dd($project);
         $project->update();
         
         return redirect('/projects/'.$id)->with('success', 'Project Updated!');
