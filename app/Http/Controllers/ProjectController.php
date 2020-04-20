@@ -148,8 +148,6 @@ class ProjectController extends Controller
             'pdf' => 'nullable|max:1999'
         ]);
 
-        dd($request);
-
         // Upload the file (probably a much better way to do this, but it works!)
         if($request->hasFile('pdf')) {
             // Here we will generate an appropriate name for the file to be stored with
