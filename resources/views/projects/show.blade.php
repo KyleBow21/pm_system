@@ -31,9 +31,10 @@
                             <h5><b>Project Year:</b> {{  $project->project_year  }}</h5>
                         </div>
                         <div class="col-md-3">
-                            <!-- Capacity will be calculated by counting the number of users for each project and compared against its rated capacity. -->
+                            @if(Auth::user()->role == "admin")
                             <h5><b>Current Capacity:</b> 0 / {{ $project->project_capacity }}</h5>
                         </div>
+                        @endif
                     </div>
 
                     <!-- Where the project description is shown. When file uploads are working, maybe switch this to a PDF viewer? -->
