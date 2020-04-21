@@ -24,4 +24,5 @@ Route::resource('projects', 'ProjectController');
 // Route::get('projects/{id}', 'ProjectController@show')->name('projects.show');
 Route::resource('modules', 'ModuleController');
 Route::resource('assignments', 'AssignmentController');
+Route::resource('users', 'UserController');
 // Route::resource('marks', 'MarkController');
