@@ -36,11 +36,14 @@
                                         <!-- Max length limited to double digits -->
                                         {{Form::text('projectCapacity', '', ['class' => 'form-control', 'placeholder' => 'Capacity...', 'maxlength' => '2'])}}
                                     </div>
-        
+
                                     <!-- "if" directive can be used to display content per user, good for authorisation -->
                                     @if(Auth::user()->role == "admin")
                                     <div class="form-group col-1">
-                                        {{ Form::submit('Submit', ['class' => 'btn btn-success form-control'])}}                              
+                                        {{ Form::submit('Submit', ['class' => 'btn btn-success form-control'])}}
+                                    </div>
+                                    <div class="form-group col-1">
+                                        <a href="{{ route('projects.index') }}" type="button" class="form-control btn btn-primary" id="buttonCancelProject"> Cancel</a>
                                     </div>
                                     @endif
                                 </div>
