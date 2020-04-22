@@ -122,6 +122,18 @@
             }
             // Not sure how to connect this with the DB yet
         }
+
+        // Again, really not sure this is the best way to do this...
+        function submitSelectedProjects(selectedProjects) {
+            $.ajax({
+                type: "POST",
+                url: '/api/userProjects/store',
+                data: "",
+                success: () => {
+                    console.log("Projects Picked!");
+                }
+            });
+        }
     </script>
     
 </body>
