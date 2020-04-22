@@ -95,20 +95,34 @@
             console.log("Unloading!");
             NProgress.start();
         });
-    </script>
 
-    <script>
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
-
-            $('#projectsTable').DataTable({
-                responsive: true
-            });
         });
-    </script>
 
+        var selectedProjects = new Array();
+
+        // Checks if and what project is checked and pushes to an array
+        // I'm rubbish at JS so...
+        function projectChecked(id) {
+
+            // Get the checkbox that was selected using its name
+            // and check if it is checked
+            if($("input[name=" + id + "]").is(":checked")) {
+                // If checked, add project id to array
+                selectedProjects.push(id);
+            } else {
+                // if unchecked, find in the array and remove.
+                var index = selectedProjects.indexOf(id);
+                if(index > -1) {
+                    selectedProjects.splice(index, 1);
+                }
+            }
+            // Not sure how to connect this with the DB yet
+        }
+    </script>
     
 </body>
 </html>

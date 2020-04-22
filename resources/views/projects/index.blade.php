@@ -56,7 +56,7 @@
                         <table class="table table-hover table-fixed" id="projectsTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="col-1">#</th>
+                                    <th scope="col" class="col-1">&nbsp;</th>
                                     <th scope="col" class="col-1">Project Year</th>
                                     <th scope="col" class="col-1">Project Name</th>
                                     <th scope="col" class="col-8">Project Description</th>
@@ -65,8 +65,8 @@
                             </thead>
                                 <tbody>
                                     @foreach ($projects as $project)
-                                        <tr id="{{$project->id}}" style="cursor:hand" onclick="">
-                                            <th scope="row" class="col-1" ><input type="checkbox" id="projectCheckbox" value="{{$project->id}}"></td>
+                                        <tr id="{{$project->id}}" style="cursor:hand">
+                                            <th scope="row" class="col-1" ><input type="checkbox" name="{{$project->id}}" onchange="projectChecked(this.name)"></td>
                                             <th class="col-1" >{{$project->project_year}}</td>
                                             <td class="col-1" >{{$project->project_name}}</td>
                                             <td class="col-8 text-truncate">{{$project->project_description}}</td>
