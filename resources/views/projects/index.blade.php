@@ -39,43 +39,38 @@
                             <!-- "if" directive can be used to display content per user, good for authorisation -->
                             @if(Auth::user()->role == "admin")
                             <div class="col-2">
-                                <label for="">Admin Controls</label>
-                                <a href="{{ route('projects.create') }}" type="button" class="form-control btn btn-primary" id="buttonCreateProject"> Create Project</a>
+                                <!-- Used to just pad the controls down to the same level as the others -->
+                                <label for="">&nbsp;</label>
+                                <a href="{{ route('projects.create') }}" type="button" class="form-control btn btn-primary" id="buttonCreateProject">Create Project</a>
+                            </div>
+                            @elseif (Auth::user()->role == "student")
+                            <div class="col-2">
+                                <!-- Used to just pad the controls down to the same level as the others -->
+                                <label for="">&nbsp;</label>
+                                <a href="#" type="button" class="form-control btn btn-primary" id="buttonCreateProject">Select Projects</a>
                             </div>
                             @endif
                         </div>
                     </form>
                     <div class="table-responsive">
-                        <table class="table table-hover table-fixed">
+                        <table class="table table-hover table-fixed" id="projectsTable">
                             <thead>
                                 <tr>
+                                    <th scope="col" class="col-1">#</th>
                                     <th scope="col" class="col-1">Project Year</th>
-                                    <th scope="col" class="col-2">Project Name</th>
-                                    <th scope="col" class="col-6">Project Description</th>
-                                    <th scope="col" class="col-2">Project Type</th>
-                                    <th scope="col" class="col-1">Controls</th>
+                                    <th scope="col" class="col-1">Project Name</th>
+                                    <th scope="col" class="col-8">Project Description</th>
+                                    <th scope="col" class="col-1">Project Type</th>
                                 </tr>
                             </thead>
                                 <tbody>
                                     @foreach ($projects as $project)
-                                        <tr id="{{$project->id}}" onclick="document.location='projects/{{$project->id}}'" style="cursor:hand">
-                                            <th scope="row" class="col-1" >{{$project->project_year}}</td>
-                                            <td class="col-2" >{{$project->project_name}}</td>
-                                            <td class="col-6 text-truncate">{{$project->project_description}}</td>
-                                            <td class="col-2">{{$project->project_type}}</td>
-                                            @if($project->user_id == Auth::user()->id)
-                                                <td class="col-1">
-                                                    <div class="btn-group" role="group">
-                                                    <a href="{{ route('projects.edit', ['project' => $project]) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                        {!! Form::open(['action' => ['ProjectController@destroy', $project->id], 'method' => 'POST']) !!}
-                                                            {{ Form::hidden('_method', 'DELETE') }}
-                                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}
-                                                        {!! Form::close() !!}
-                                                    </div>
-                                                </td>
-                                            @else
-                                                <td class="col-1">&nbsp;</td>
-                                            @endif
+                                        <tr id="{{$project->id}}" style="cursor:hand" onclick="">
+                                            <th scope="row" class="col-1" ><input type="checkbox" id="projectCheckbox" value="{{$project->id}}"></td>
+                                            <th class="col-1" >{{$project->project_year}}</td>
+                                            <td class="col-1" >{{$project->project_name}}</td>
+                                            <td class="col-8 text-truncate">{{$project->project_description}}</td>
+                                            <td class="col-1">{{$project->project_type}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -39,12 +39,10 @@
             <div class="sidebar-header">
                 <h3>Swansea University<br>PMS</h3>
             </div>
-
             <ul class="list-unstyled components pt-0">                
                 <li class="active">
                     <a href="{{ route('home') }}">Home</a>
-                </li>
-                
+                </li>                
                 <li>
                     <a href="#moduleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Modules</a>
                     <!-- Implement a for loop to populate with modules a user is subbed to -->
@@ -79,9 +77,7 @@
 
     <script>
         feather.replace();
-    </script>
 
-    <script>
         // Start the progress bar 
         NProgress.start();
 
@@ -106,7 +102,13 @@
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
+
+            $('#projectsTable').DataTable({
+                responsive: true
+            });
         });
     </script>
+
+    
 </body>
 </html>
