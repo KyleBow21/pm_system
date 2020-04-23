@@ -231,18 +231,16 @@ class ProjectController extends Controller
 
     public function submitChoices(Request $request) 
     {
+        // Decode the JSON array to something PHP understands
         $selectedProjects = json_decode($request->selected_projects);
 
+        // For each entry in the array, insert a new record into the "project_user" table
         foreach($selectedProjects as $project_id) {
             $user_id = Auth::user()->id;
-
+            
             DB::table('project_user')->insert([
                 ['project_id' => $project_id, 'user_id' => $user_id]
             ]);
         }
-
-        // Get individual projects
-        // Create new entry into pivot table with user ID and project ID
-        // Save to table
     }
 }
