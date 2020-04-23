@@ -32,9 +32,12 @@
                         </div>
                         <div class="col-md-3">
                             @if(Auth::user()->role == "admin")
-                            <h5><b>Current Capacity:</b> 0 / {{ $project->project_capacity }}</h5>
+                                <h5><b>Current Capacity: </b>0 / {{ $project->project_capacity }}</h5>
+                            @else
+                                <h5><b>Current Capacity: </b>Not Full</h5>
+                            @endif
                         </div>
-                        @endif
+                        
                     </div>
 
                     <!-- Where the project description is shown. When file uploads are working, maybe switch this to a PDF viewer? -->
@@ -51,7 +54,7 @@
                             <h3>Project Attachment</h3>
                             <hr>
                             <!-- Need to make this all responsive, kinda broke at the moment but it does display the attachment -->
-                            <embed class="embed-responsive w-100 h-100" src="/storage/docs/{{$project->project_attachment}}" alt="pdf" />
+                            <embed class="embed-responsive w-100 h-100" src="/storage/docs/{{$project->project_attachment}}" alt="No Attachment!"/>
                         </div>
                     </div>
                 </div>

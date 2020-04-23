@@ -10999,6 +10999,10 @@ a[aria-expanded=true] {
   transform: translateY(-50%);
 }
 
+#buttonCreateProject {
+  color: whitesmoke;
+}
+
 a[data-toggle=collapse] {
   position: relative;
 }

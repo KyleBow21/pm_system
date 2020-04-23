@@ -237,10 +237,12 @@ class ProjectController extends Controller
         // For each entry in the array, insert a new record into the "project_user" table
         foreach($selectedProjects as $project_id) {
             $user_id = Auth::user()->id;
-            
-            DB::table('project_user')->insert([
+
+            DB::table('project_user')->insertOrIgnore([
                 ['project_id' => $project_id, 'user_id' => $user_id]
             ]);
         }
+
+        return redirect('/projects')->with('success', 'Selected Projects Submitted!');
     }
 }

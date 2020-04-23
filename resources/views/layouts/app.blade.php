@@ -22,10 +22,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Feather icons (will be compiled with scss, this is just for testing!) -->
+    <!-- Feather icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-
-    <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 
     <!-- Progress bar plugin -->
     <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
@@ -35,6 +33,7 @@
     <div id="app" class="wrapper">
 
         <!-- Sidebar -->
+        <!-- i feel that the sidebar is a bit of bad design considering it has so few links? -->
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Swansea University<br>PMS</h3>
@@ -42,21 +41,9 @@
             <ul class="list-unstyled components pt-0">                
                 <li class="active">
                     <a href="{{ route('home') }}">Home</a>
-                </li>                
-                <li>
-                    <a href="#moduleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Modules</a>
-                    <!-- Implement a for loop to populate with modules a user is subbed to -->
-                    <ul class="collapse list-unstyled" id="moduleSubmenu">
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Assignments</a>
                 </li>
                 <li>
                     <a href="{{ route('projects.index') }}">Projects</a>
-                </li>
-                <li>
-                    <a href="#">Marks</a>
                 </li>
             </ul>
         </nav>

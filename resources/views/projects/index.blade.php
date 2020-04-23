@@ -66,11 +66,12 @@
                                 <tbody>
                                     @foreach ($projects as $project)
                                         <tr id="{{$project->id}}" style="cursor:hand">
+                                            <!-- This mess of "onclick" is the only way I can think of re-directing at the moment -->
                                             <th scope="row" class="col-1" ><input type="checkbox" name="{{$project->id}}" onchange="projectChecked(this.name)"></td>
-                                            <th class="col-1" >{{$project->project_year}}</td>
-                                            <td class="col-1" >{{$project->project_name}}</td>
-                                            <td class="col-8 text-truncate">{{$project->project_description}}</td>
-                                            <td class="col-1">{{$project->project_type}}</td>
+                                            <th class="col-1" onclick="document.location='projects/{{$project->id}}'">{{$project->project_year}}</td>
+                                            <td class="col-1" onclick="document.location='projects/{{$project->id}}'">{{$project->project_name}}</td>
+                                            <td class="col-8 text-truncate" onclick="document.location='projects/{{$project->id}}'">{{$project->project_description}}</td>
+                                            <td class="col-1" onclick="document.location='projects/{{$project->id}}'">{{$project->project_type}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
