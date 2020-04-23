@@ -126,11 +126,32 @@
         }
 
         // Again, really not sure this is the best way to do this...
-        function submitSelectedProjects(selectedProjects) {
-            console.log(selectedProjects);
-            axios.post(route('api.projects.submit', selectedProjects)).catch(error => {
-                console.log(error);
-            })
+        function submitSelectedProjects() {
+            NProgress.start();
+
+            // Get the users api token and pass to JS variable
+            var bearerToken = @json($token ?? '');
+
+            // Crappy validation will do for now
+            if(selectedProjects.length != 5) {
+                console.log("Not enough projects selected!");
+                NProgress.done();
+            } else {
+                var selectedProjectsJson = JSON.stringify(selectedProjects);
+                console.log(selectedProjectsJson);
+                axios.post(route('api.projects.submit'), {
+                    api_token: bearerToken,
+                    selected_projects: selectedProjectsJson
+                })
+                .then(response => {
+                    return response;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+                NProgress.done();
+            }
+            
         }
     </script>
     

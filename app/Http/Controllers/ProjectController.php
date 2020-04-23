@@ -26,9 +26,14 @@ class ProjectController extends Controller
         // * Get all projects and redirect to projects.index.php
         $projects = Project::orderBy('project_name', 'asc')->get();
         $user = Auth::user();
-        $token = $user->api_token;
-        dd($token);
-        return view('projects.index')->with('projects', $projects)->with('user', $user);
+        if(Auth::check()) {
+            $token = $user->api_token;
+        } else {
+            return view('login');
+        }
+        
+        // Pretty sure there's a more concise way to pass muliple variables but OH WELL
+        return view('projects.index')->with('projects', $projects)->with('user', $user)->with('token', $token);
     }
 
     /**
@@ -224,11 +229,17 @@ class ProjectController extends Controller
         }        
     }
 
-    public function submitChoices(Request $request) {        
-        // Validate the request
-        $this->validate($request, [
-            'selectedProjects' => 'required'
-        ]);
+    public function submitChoices(Request $request) 
+    {
+        $selectedProjects = json_decode($request->selected_projects);
+
+        foreach($selectedProjects as $project_id) {
+            $user_id = Auth::user()->id;
+
+            DB::table('project_user')->insert([
+                ['project_id' => $project_id, 'user_id' => $user_id]
+            ]);
+        }
 
         // Get individual projects
         // Create new entry into pivot table with user ID and project ID
