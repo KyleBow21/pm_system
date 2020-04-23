@@ -24,9 +24,10 @@ class ProjectController extends Controller
     public function index()
     {
         // * Get all projects and redirect to projects.index.php
-        // ? Possibly implement the feature to get only projects that apply to the current user?
         $projects = Project::orderBy('project_name', 'asc')->get();
         $user = Auth::user();
+        $token = $user->api_token;
+        dd($token);
         return view('projects.index')->with('projects', $projects)->with('user', $user);
     }
 
@@ -221,5 +222,16 @@ class ProjectController extends Controller
         } else {
             return redirect('/projects')->with('error', 'Unauthorized');
         }        
+    }
+
+    public function submitChoices(Request $request) {        
+        // Validate the request
+        $this->validate($request, [
+            'selectedProjects' => 'required'
+        ]);
+
+        // Get individual projects
+        // Create new entry into pivot table with user ID and project ID
+        // Save to table
     }
 }

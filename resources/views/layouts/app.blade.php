@@ -75,6 +75,8 @@
         </main>
     </div>
 
+    @routes
+
     <script>
         feather.replace();
 
@@ -125,14 +127,10 @@
 
         // Again, really not sure this is the best way to do this...
         function submitSelectedProjects(selectedProjects) {
-            $.ajax({
-                type: "POST",
-                url: '/api/userProjects/store',
-                data: "",
-                success: () => {
-                    console.log("Projects Picked!");
-                }
-            });
+            console.log(selectedProjects);
+            axios.post(route('api.projects.submit', selectedProjects)).catch(error => {
+                console.log(error);
+            })
         }
     </script>
     

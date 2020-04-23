@@ -22,14 +22,12 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('module_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('api_token', 80)->unique()->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('scheme_id')->references('id')
-            ->on('schemes')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('module_id')->references('id')
-            ->on('modules')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('scheme_id')->references('id')->on('schemes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

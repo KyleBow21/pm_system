@@ -47,7 +47,7 @@
                             <div class="col-2">
                                 <!-- Used to just pad the controls down to the same level as the others -->
                                 <label for="">&nbsp;</label>
-                                <a href="#" type="button" class="form-control btn btn-primary" id="buttonCreateProject">Select Projects</a>
+                                <a type="button" class="form-control btn btn-primary" id="buttonCreateProject" onclick="submitSelectedProjects()">Select Projects</a>
                             </div>
                             @endif
                         </div>

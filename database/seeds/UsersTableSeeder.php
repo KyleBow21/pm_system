@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         $u->scheme_id = 1;
         $u->module_id = 1;
         $u->password = bcrypt('password');
+        $u->api_token = Str::random(80);
         $u->save();
 
         $u = new User();
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
         $u->scheme_id = 2;
         $u->module_id = 2;
         $u->password = bcrypt('password');
+        $u->api_token = Str::random(80);
         $u->save();
 
         factory(App\User::class, 50)->create();
