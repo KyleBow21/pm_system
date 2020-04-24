@@ -10890,7 +10890,7 @@ a.text-dark:focus {
 }
 
 body {
-  height: 100%;
+  height: 100vh;
 }
 
 h1,
@@ -11079,13 +11079,15 @@ table {
 
 thead {
   flex: 0 0 auto;
+  display: table-header-group;
 }
 
 tbody {
   flex: 1 1 auto;
   display: block;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
+  height: 50vh;
 }
 
 tr {
@@ -11097,7 +11099,6 @@ tr {
 #content {
   width: calc(100% - 250px);
   height: calc(100% - 200px);
-  margin-bottom: 100px;
   transition: all 0.3s;
   position: absolute;
   top: 0;

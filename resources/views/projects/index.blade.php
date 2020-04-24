@@ -56,22 +56,20 @@
                         <table class="table table-hover" id="projectsTable">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="col-1">&nbsp;</th>
-                                    <th scope="col" class="col-1">Project Year</th>
-                                    <th scope="col" class="col-1">Project Name</th>
-                                    <th scope="col" class="col-8">Project Description</th>
-                                    <th scope="col" class="col-1">Project Type</th>
+                                    <th scope="col" class="col-1 w-25">&nbsp;</th>
+                                    <th scope="col" class="col-1 w-25">Project Name</th>
+                                    <th scope="col" class="col-9">Project Description</th>
+                                    <th scope="col" class="col-1 w-25">Project Type</th>
                                 </tr>
                             </thead>
                                 <tbody id="tbody">
                                     @foreach ($projects as $project)
                                         <tr id="{{$project->id}}" style="cursor:hand">
                                             <!-- This mess of "onclick" is the only way I can think of re-directing at the moment -->
-                                            <th scope="row" class="col-1" ><input type="checkbox" name="{{$project->id}}" onchange="projectChecked(this.name)"></td>
-                                            <th class="col-1" onclick="document.location='projects/{{$project->id}}'">{{$project->project_year}}</td>
-                                            <td class="col-1" onclick="document.location='projects/{{$project->id}}'">{{$project->project_name}}</td>
-                                            <td class="col-8 text-truncate" onclick="document.location='projects/{{$project->id}}'">{{$project->project_description}}</td>
-                                            <td class="col-1" onclick="document.location='projects/{{$project->id}}'">{{$project->project_type}}</td>
+                                            <th scope="col" class="col-1 w-25" ><input type="checkbox" name="{{$project->id}}" onchange="projectChecked(this.name)"></td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='projects/{{$project->id}}'">{{$project->project_name}}</td>
+                                            <td scope="col" class="col-9 text-truncate" onclick="document.location='projects/{{$project->id}}'">{{$project->project_description}}</td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='projects/{{$project->id}}'">{{$project->project_type}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
