@@ -9,12 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -45,6 +39,14 @@
                 <li>
                     <a href="{{ route('projects.index') }}">Projects</a>
                 </li>
+                <li>
+                    <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Projects</a>
+                    <ul class="collapse list-unstyled" id="projectSubmenu">
+                        <li>
+                            <a href="{{ route('projects.index') }}">View Projects</a>
+                        </li>                        
+                    </ul>
+                </li>
             </ul>
         </nav>
         
@@ -64,7 +66,11 @@
 
     @routes
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <script>
+        // All of this JS should probably go in its own file but this is fine for now
         feather.replace();
 
         // Start the progress bar 
@@ -85,8 +91,9 @@
             NProgress.start();
         });
 
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
+        // This is very short jQuery for document.ready
+        $(() => {
+            $('#sidebarCollapse').on('click', () => {
                 $('#sidebar').toggleClass('active');
             });
         });
