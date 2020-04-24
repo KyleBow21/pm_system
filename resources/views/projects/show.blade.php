@@ -4,8 +4,9 @@
 <div class="container-fluid h-100">
     <div class="row justify-content-center h-100">
         <div class="col-md-12 px-5">
-            <div class="card h-100">
-            <div class="card-header">Projects - {{$project->project_name}}</div>
+            <h3 class="page-header">Project - {{$project->project_name}}</h3>
+            <div class="card h-100">            
+            <div class="card-header">&nbsp;</div>
 
                 <div class="card-body">
                     @if (session('status'))

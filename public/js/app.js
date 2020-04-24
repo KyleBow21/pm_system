@@ -49526,6 +49526,47 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(function () {
+  localStorage.setItem('prefs-theme', 'light');
+});
+
+function returnThemeBasedOnLocalStorage() {
+  var pref = localStorage.getItem('prefs-theme');
+  var lastChanged = localStorage.getItem('prefs-theme-modified');
+  var now = new Date();
+  now = now.getTime();
+  var minutesPassed = (now - lastChanged) / (1000 * 60);
+  if (minutesPassed < 120 && pref == "light") return "light";else if (minutesPassed < 120 && pref == "dark") return "dark";else return undefined;
+}
+
+function syncBetweenTabs() {
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'prefs-theme') {
+      if (e.newValue === 'light') enableTheme('light');else if (e.newValue === 'dark') enableTheme('dark');
+    }
+
+    ;
+  });
+}
+
+function returnThemeBasedOnOS() {
+  var pref = window.matchMedia('(prefers-color-scheme: dark)');
+  if (pref.matches) return 'dark';else {
+    pref = window.matchMedia('(prefers-color-scheme: light)');
+    if (pref.matches) return 'light';else return undefined;
+  }
+}
+
+function returnThemeBasedOnTime() {
+  var date = new Date();
+  var hour = date.getHours();
+  if (hour > 20 || hour < 5) return 'dark';else return 'light';
+}
+
+function initTheme() {
+  // Enable different theme based on criteria
+  enableTheme(returnThemeBasedOnLocalStorage() || returnThemeBasedOnOS() || returnThemeBasedOnTime(), false);
+}
 
 /***/ }),
 
