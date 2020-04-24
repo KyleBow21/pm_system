@@ -143,7 +143,7 @@
 
         $("#searchTable").keyup(function() {
             //split the current value of searchInput
-            var data = this.value.split(" ");
+            var data = this.value.toUpperCase().split(" ");
             //create a jquery object of the rows
             var jo = $("#tbody").find("tr");
             if (this.value == "") {
@@ -157,7 +157,7 @@
             jo.filter(function(i, v) {
                 var $t = $(this);
                 for (var d = 0; d < data.length; ++d) {
-                    if ($t.is(":contains('" + data[d] + "')")) {
+                    if ($t.text().toUpperCase().indexOf(data[d]) > -1) {
                         return true;
                     }
             }

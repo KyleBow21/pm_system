@@ -27,14 +27,6 @@
                                 <label for="projectFilterName">Search</label>
                                 <input class="form-control" type="text" id="searchTable" placeholder="Search...">
                             </div>
-                            <div class="form-group col">
-                                <label for="projectFilterType">Project Type</label>
-                                <select class="form-control" name="" id="projectFilterType">
-                                    <option selected>All</option>
-                                    <option>Technical</option>
-                                    <option>Research</option>
-                                </select>
-                            </div>
 
                             <!-- "if" directive can be used to display content per user, good for authorisation -->
                             @if(Auth::user()->role == "admin")
