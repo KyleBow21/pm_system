@@ -249,6 +249,13 @@ class ProjectController extends Controller
         }        
     }
 
+    public function userProject() 
+    {
+        $uid = Auth::id();
+        dd($uid);
+        DB::table('projects')->where('user_id', $uid);
+    }
+
     public function submitChoices(Request $request) 
     {
         // Decode the JSON array to something PHP understands

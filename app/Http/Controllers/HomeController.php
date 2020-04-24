@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Module;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
+
 class HomeController extends Controller
 {
     /**
@@ -30,25 +32,24 @@ class HomeController extends Controller
     {
         // Good way you can check if someone is authenticated.
         if(Auth::check()) {
-            // Get the user as a collection
-            $user = Auth::user();
-            // We can get everything from the above, including ID
-            $id = $user->id;
-            // Use DD to dump everything associated with a variable
-            // dd($id);
-            $usermodule = DB::table('users')->where('id','=', $id)->get('module_id')->first();
-            $projects = DB::table('projects')->where('user_id', '=', $id)->get();
-            $modules = DB::table('modules')->where('id', '=', $usermodule->module_id)->get();
+            $uid = Auth::id();
 
-            // $assignments = DB::table('assignments')->where('id', '=', $modules->first()->assignment_id)->get();
+            // Get all projects that the user has selected
+            $projectSelections = DB::table('project_user')->where('user_id', $uid)->get();
 
-            $marks = Marks::all();
+            // Create a new Laravel collection
+            $projects = collect();
+
+            // For each selected project, find and push to collection
+            foreach($projectSelections as $project) {
+                $projects->push(Project::findOrFail($project->project_id));
+            }
+
+            // Put all data in an array and send to view
             $data = [
-                'modules'  => $modules,
-                // 'assignments'   => $assignments,
-                'projects' => $projects,
-                'marks' => $marks
+                'projects' => $projects
             ];
+
             return view('home')->with($data);
         }
         else {

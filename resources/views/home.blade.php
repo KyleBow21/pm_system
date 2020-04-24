@@ -4,9 +4,8 @@
 <div class="container-fluid" id="dashboard">
     <div class="row justify-content-center">
         <div class="col-md-12 px-5">
-            <div class="card-deck">
             <div class="card">
-                <div class="card-header">Modules</div>
+                <div class="card-header">My Selected Projects</div>
                 <div class="scrollable">
                     <div class="card-body">
                         @if (session('status'))
@@ -15,62 +14,7 @@
                             </div>
                         @endif
 
-                        <!-- Show if the user has no logged in -->
-                        @guest
-                            <h4>You must log-in to use this service!</h4>
-                        @endguest
-
-                        <!-- Show if the user has logged in -->
-                        @auth
-                        @foreach ($modules as $module)
-                            <li>{{ $module->module_name }} <i data-feather="chevron-right"></i></li>
-                        @endforeach
-                        @endauth
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">Assignments</div>
-                <div class="scrollable">
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        <!-- Show if the user has no logged in -->
-                        @guest
-                            <h4>You must log-in to use this service!</h4>
-                        @endguest
-
-                        <!-- Show if the user has logged in -->
-                        @auth
-                        
-                        @endauth
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-center pt-5">
-        <div class="col-md-12 px-5">
-            <div class="card-deck">
-            <div class="card">
-                <div class="card-header">Projects</div>
-                <div class="scrollable">
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        <!-- Show if the user has no logged in -->
+                        <!-- Show if the user has not logged in -->
                         @guest
                             <h4>You must log-in to use this service!</h4>
                         @endguest
@@ -78,14 +22,17 @@
                         <!-- Show if the user has logged in -->
                         @auth
                         @foreach ($projects as $project)
-                            <li onclick="document.location='projects/{{$project->id}}'">{{ $project->project_name }} <i data-feather="chevron-right"></i></li>
+                            <li>{{ $project->project_name }} <i data-feather="chevron-right"></i></li>
                         @endforeach
                         @endauth
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
 
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-12 px-5">
             <div class="card">
                 <div class="card-header">Marks</div>
                 <div class="scrollable">
@@ -95,23 +42,10 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        <!-- Show if the user has no logged in -->
-                        @guest
-                            <h4>You must log-in to use this service!</h4>
-                        @endguest
-
-                        <!-- Show if the user has logged in -->
-                        @auth
-                        @foreach ($marks as $mark)
-                            <li>{{ $mark->mark_score }} <i data-feather="chevron-right"></i></li>
-                        @endforeach
-                        @endauth
                     </div>
                 </div>
 
             </div>
-        </div>
         </div>
     </div>
 </div>

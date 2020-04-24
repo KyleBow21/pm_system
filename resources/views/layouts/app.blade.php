@@ -33,19 +33,14 @@
                 <h3>Swansea University<br>PMS</h3>
             </div>
             <ul class="list-unstyled components pt-0">                
-                <li class="active">
+                <li>
                     <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li>
-                    <a href="{{ route('projects.index') }}">Projects</a>
+                    <a href="{{ route('projects.index') }}">All Projects</a>
                 </li>
                 <li>
-                    <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Projects</a>
-                    <ul class="collapse list-unstyled" id="projectSubmenu">
-                        <li>
-                            <a href="{{ route('projects.index') }}">View Projects</a>
-                        </li>                        
-                    </ul>
+                    <a href="#">My Project</a>
                 </li>
             </ul>
         </nav>
