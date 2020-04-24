@@ -14,6 +14,7 @@
 
 body {
     height: 100vh;
+    font-size: 1rem;
 }
 
 // Custom styles
@@ -259,11 +260,17 @@ tr {
     padding-right: 0px;
     display: grid;
     grid-template-columns: 10fr 1fr;
-    // background-color: lightblue;
+    background-color: #e9ecef;
     font-size: 14px;
     grid-gap: 10px;
-    border: 1px solid transparent;
     cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.project-list:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
 }
 
 .feather {

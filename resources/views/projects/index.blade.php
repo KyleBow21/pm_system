@@ -4,9 +4,9 @@
 <div class="container-fluid h-100" id="dashboard">
     <div class="row justify-content-center h-100">
         <div class="col-md-12 px-5">
-            <h3 class="page-header">All Projects</h3>
+            <h3 class="page-header">Projects</h3>
             <div class="card" id="project-table">
-                <div class="card-header">&nbsp;</div>
+                <div class="card-header">Overview</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

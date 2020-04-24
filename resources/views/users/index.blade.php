@@ -21,7 +21,7 @@
             </div>
 
             <div class="card mt-3">
-                <div class="card-header">Information</div>
+                <div class="card-header">Personal Information</div>
                 <div class="card-body">
                     <form class="mt-3">
                         <div class="form-row">
@@ -30,7 +30,7 @@
                                 <input class="form-control" type="text" disabled value="{{ $user->name }}">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="">Email</label>
+                                <label for=""><i data-feather="mail"></i> Email</label>
                                 <input class="form-control" type="text" disabled value="{{ $user->email }}">
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
                                 <label for="">Selected Project</label>
-                                <li class="project-list">{{ $user->selected_project }} <i data-feather="chevron-right"></i></li>
+                                <li onclick="document.location='projects/{{$selectedProject->id}}'" class="project-list">{{ $selectedProject->project_name }}<i data-feather="chevron-right"></i></li>
                             </div>
                         </div>
                     </form>

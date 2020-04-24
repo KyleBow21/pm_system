@@ -27,7 +27,7 @@
     <div id="app" class="wrapper">
 
         <!-- Sidebar -->
-        <!-- i feel that the sidebar is a bit of bad design considering it has so few links? -->
+        <!-- TODO: Restyle the sidebar smaller and with icons -->
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Swansea University<br>PMS</h3>
@@ -38,9 +38,6 @@
                 </li>
                 <li>
                     <a href="{{ route('projects.index') }}">All Projects</a>
-                </li>
-                <li>
-                    <a href="#">My Project</a>
                 </li>
             </ul>
         </nav>
