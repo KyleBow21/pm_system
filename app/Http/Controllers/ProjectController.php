@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller
 {
-    public function __construct() 
+    public function __construct()
     {
-        // Apply auth requirement    
+        // Apply auth requirement
         $this->middleware('auth');
     }
     /**
@@ -26,7 +26,7 @@ class ProjectController extends Controller
         // * Get all projects and redirect to projects.index.php
         $projects = Project::orderBy('project_name', 'asc')->get();
         $user = Auth::user();
-        if(Auth::check()) {
+        if (Auth::check()) {
             $token = $user->api_token;
         } else {
             return view('login');
@@ -35,17 +35,25 @@ class ProjectController extends Controller
         // We will check if the user has already selected their projects
         // Very janky way of doing it, but it works and we got no time!
         try {
-            if(DB::table('project_user')->where('user_id', $user->id)->count() == 5) {
+            if (
+                DB::table('project_user')
+                    ->where('user_id', $user->id)
+                    ->count() == 5
+            ) {
                 $canSelectProjects = false;
             } else {
                 $canSelectProjects = true;
-            }                
+            }
         } catch (Exception $e) {
             dd($e);
         }
-        
+
         // Pretty sure there's a more concise way to pass muliple variables but OH WELL
-        return view('projects.index')->with('projects', $projects)->with('user', $user)->with('token', $token)->with('canSelectProjects', $canSelectProjects);
+        return view('projects.index')
+            ->with('projects', $projects)
+            ->with('user', $user)
+            ->with('token', $token)
+            ->with('canSelectProjects', $canSelectProjects);
     }
 
     /**
@@ -55,12 +63,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        if(Gate::allows('create-project')) {
+        if (Gate::allows('create-project')) {
             return view('projects.create');
         } else {
             return redirect('/')->with('error', 'Unauthorized');
         }
-        
     }
 
     /**
@@ -78,11 +85,11 @@ class ProjectController extends Controller
             'projectType' => 'required',
             'projectYear' => 'required|integer',
             'projectCapacity' => 'required|integer',
-            'pdf' => 'nullable|max:1999'
+            'pdf' => 'nullable|max:1999',
         ]);
 
         // Upload the file (probably a much better way to do this, but it works!)
-        if($request->hasFile('pdf')) {
+        if ($request->hasFile('pdf')) {
             // Here we will generate an appropriate name for the file to be stored with
             // Get file name
             $fileNameWithExt = $request->file('pdf')->getClientOriginalName();
@@ -94,18 +101,20 @@ class ProjectController extends Controller
             $extension = $request->file('pdf')->getClientOriginalExtension();
 
             // Create filename that we will store
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
             // Store the file
             $fileNameToStore = str_replace(' ', '', $fileNameToStore);
-            $path = $request->file('pdf')->storeAs('public/docs', $fileNameToStore);
+            $path = $request
+                ->file('pdf')
+                ->storeAs('public/docs', $fileNameToStore);
         } else {
             // This is from old code, will refine.
             $fileNameToStore = 'nofile.pdf';
         }
 
         // Okay, time to make the project instance to store in the database
-        $project = new Project;
+        $project = new Project();
         $project->project_name = $request->input('projectName');
         $project->project_year = $request->input('projectYear');
         $project->project_type = $request->input('projectType');
@@ -115,8 +124,11 @@ class ProjectController extends Controller
         $project->user_id = Auth::user()->id;
         $project->project_attachment = $fileNameToStore;
         $project->save();
-        
-        return redirect('/projects/'.$project->id)->with('success', 'Project Created!');
+
+        return redirect('/projects/' . $project->id)->with(
+            'success',
+            'Project Created!'
+        );
     }
 
     /**
@@ -128,15 +140,21 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        if(DB::table('project_user')->where('project_id', $project->id)->count() == $project->project_capacity) {
+        if (
+            DB::table('project_user')
+                ->where('project_id', $project->id)
+                ->count() == $project->project_capacity
+        ) {
             $isProjectFull = true;
-        }
-        else {
+        } else {
             $isProjectFull = false;
         }
 
         $supervisor = User::findOrFail($project->user_id);
-        return view('projects.show')->with('project', $project)->with('supervisor', $supervisor)->with('isProjectFull', $isProjectFull);
+        return view('projects.show')
+            ->with('project', $project)
+            ->with('supervisor', $supervisor)
+            ->with('isProjectFull', $isProjectFull);
     }
 
     /**
@@ -151,14 +169,14 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         // Check if the user is allowed to edit projects
-        if(Gate::allows('edit-project')) {
-            if(Auth::user()->id !== $project->user_id) {
+        if (Gate::allows('edit-project')) {
+            if (Auth::user()->id !== $project->user_id) {
                 // Send 'em back to where they belong!
                 return redirect('/projects')->with('error', 'Unauthorized!');
             } else {
                 // Go to the project edit view with the project data.
                 return view('projects.edit')->with('project', $project);
-            }    
+            }
         } else {
             return redirect('/projects')->with('error', 'Unauthorized!');
         }
@@ -183,11 +201,11 @@ class ProjectController extends Controller
             'projectType' => 'required',
             'projectYear' => 'required|integer',
             'projectCapacity' => 'required|integer',
-            'pdf' => 'nullable|max:1999'
+            'pdf' => 'nullable|max:1999',
         ]);
 
         // Upload the file (probably a much better way to do this, but it works!)
-        if($request->hasFile('pdf')) {
+        if ($request->hasFile('pdf')) {
             // Here we will generate an appropriate name for the file to be stored with
             // Get file name
             $fileNameWithExt = $request->file('pdf')->getClientOriginalName();
@@ -199,11 +217,13 @@ class ProjectController extends Controller
             $extension = $request->file('pdf')->getClientOriginalExtension();
 
             // Create filename that we will store
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
             // Store the file
             $fileNameToStore = str_replace(' ', '', $fileNameToStore);
-            $path = $request->file('pdf')->storeAs('public/docs', $fileNameToStore);
+            $path = $request
+                ->file('pdf')
+                ->storeAs('public/docs', $fileNameToStore);
         } else {
             // This is from old code, will refine.
             $fileNameToStore = 'nofile.pdf';
@@ -218,9 +238,11 @@ class ProjectController extends Controller
         $project->project_capacity = $request->input('projectCapacity');
         $project->project_attachment = $fileNameToStore;
         $project->update();
-        
-        return redirect('/projects/'.$id)->with('success', 'Project Updated!');
 
+        return redirect('/projects/' . $id)->with(
+            'success',
+            'Project Updated!'
+        );
     }
 
     /**
@@ -235,37 +257,39 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         // Check if user is allowed to delete projects
-        if(Gate::allows('delete-project')) {
+        if (Gate::allows('delete-project')) {
             // Check if a user is logged in and owns the project
-            if(Auth::user()->id !== $project->user_id) {
+            if (Auth::user()->id !== $project->user_id) {
                 return redirect('/projects')->with('error', 'Unauthorized');
             } else {
                 // Delete the project and redirect back to the projects index page.
                 $project->delete();
-                return redirect('/projects')->with('success', 'Project '.$project->project_name.' deleted');
+                return redirect('/projects')->with(
+                    'success',
+                    'Project ' . $project->project_name . ' deleted'
+                );
             }
         } else {
             return redirect('/projects')->with('error', 'Unauthorized');
-        }        
+        }
     }
 
-    public function userProject() 
-    {
-        $uid = Auth::id();
-        dd($uid);
-        DB::table('projects')->where('user_id', $uid);
-    }
-
-    public function submitChoices(Request $request) 
+    /**
+     * Add project choices to pivot table.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function submitChoices(Request $request)
     {
         // Decode the JSON array to something PHP understands
         $selectedProjects = json_decode($request->selected_projects);
         $user_id = Auth::user()->id;
 
         // For each entry in the array, insert a new record into the "project_user" table
-        foreach($selectedProjects as $project_id) {
+        foreach ($selectedProjects as $project_id) {
             DB::table('project_user')->insertOrIgnore([
-                ['project_id' => $project_id, 'user_id' => $user_id]
+                ['project_id' => $project_id, 'user_id' => $user_id],
             ]);
         }
 

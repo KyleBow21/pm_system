@@ -25,7 +25,7 @@
                             <div class="form-group col">
                                 <!-- TODO: Make the search controls work -->
                                 <label for="projectFilterName">Search</label>
-                                <input class="form-control" type="text" id="projectFilterName" placeholder="Search...">
+                                <input class="form-control" type="text" id="searchTable" placeholder="Search...">
                             </div>
                             <div class="form-group col">
                                 <label for="projectFilterType">Project Type</label>
@@ -41,7 +41,7 @@
                             <div class="col-2">
                                 <!-- Used to just pad the controls down to the same level as the others -->
                                 <label for="">&nbsp;</label>
-                                <a href="{{ route('projects.create') }}" type="button" class="form-control btn btn-primary" id="buttonCreateProject">Create Project</a>
+                                <a href="{{ route('projects.create') }}" type="button" class="form-control btn btn-primary" id="buttonCreateProject" onkeyup="searchTable()">Create Project</a>
                             </div>
                             @elseif (Auth::user()->role == "student")
                             <div class="col-2">
@@ -53,7 +53,7 @@
                         </div>
                     </form>
                     <div class="table-responsive">
-                        <table class="table table-hover table-fixed" id="projectsTable">
+                        <table class="table table-hover" id="projectsTable">
                             <thead>
                                 <tr>
                                     <th scope="col" class="col-1">&nbsp;</th>
@@ -63,7 +63,7 @@
                                     <th scope="col" class="col-1">Project Type</th>
                                 </tr>
                             </thead>
-                                <tbody>
+                                <tbody id="tbody">
                                     @foreach ($projects as $project)
                                         <tr id="{{$project->id}}" style="cursor:hand">
                                             <!-- This mess of "onclick" is the only way I can think of re-directing at the moment -->
