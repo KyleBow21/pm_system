@@ -30,3 +30,62 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(() => {
+    localStorage.setItem('prefs-theme', 'light');
+})
+
+function returnThemeBasedOnLocalStorage() {
+    const pref = localStorage.getItem('prefs-theme');
+    const lastChanged = localStorage.getItem('prefs-theme-modified');
+    let now = new Date();
+    now = now.getTime();
+    const minutesPassed = (now - lastChanged) / (1000 * 60);
+
+    if (
+        minutesPassed < 120 &&
+        pref == "light"
+    ) return "light"
+    else if (
+        minutesPassed < 120 &&
+        pref == "dark"
+    ) return "dark"
+    else return undefined;
+}
+
+function syncBetweenTabs() {
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'prefs-theme') {
+            if (e.newValue === 'light') enableTheme('light');
+            else if (e.newValue === 'dark') enableTheme('dark')
+        };
+    });
+}
+
+function returnThemeBasedOnOS() {
+    let pref = window.matchMedia('(prefers-color-scheme: dark)');
+    if (pref.matches) return 'dark'
+    else {
+        pref = window.matchMedia('(prefers-color-scheme: light)');
+        if (pref.matches) return 'light'
+        else return undefined;
+    }
+}
+
+function returnThemeBasedOnTime() {
+    let date = new Date();
+    const hour = date.getHours();
+    if (hour > 20 || hour < 5) return 'dark';
+    else return 'light';
+}
+
+function initTheme() {
+    // Enable different theme based on criteria
+    enableTheme(
+        returnThemeBasedOnLocalStorage() ||
+        returnThemeBasedOnOS() ||
+        returnThemeBasedOnTime(),
+        false
+    );
+
+}
