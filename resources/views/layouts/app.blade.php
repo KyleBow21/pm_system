@@ -96,7 +96,6 @@
         // Checks if and what project is checked and pushes to an array
         // I'm rubbish at JS so...
         function projectChecked(id) {
-
             // Get the checkbox that was selected using its name
             // and check if it is checked
             if($("input[name=" + id + "]").is(":checked")) {
@@ -119,13 +118,13 @@
             // Get the users api token and pass to JS variable
             var bearerToken = @json($token ?? '');
 
-            // Crappy validation will do for now
+            // Crappy validation will do for now, do not use an alert!
             if(selectedProjects.length != 5) {
                 console.log("Not enough projects selected!");
                 NProgress.done();
             } else {
+                // Convert array to JSON
                 var selectedProjectsJson = JSON.stringify(selectedProjects);
-                console.log(selectedProjectsJson);
                 axios.post(route('api.projects.submit'), {
                     api_token: bearerToken,
                     selected_projects: selectedProjectsJson
@@ -138,7 +137,6 @@
                 });
                 NProgress.done();
             }
-            
         }
     </script>
     

@@ -31,9 +31,21 @@ class ProjectController extends Controller
         } else {
             return view('login');
         }
+
+        // We will check if the user has already selected their projects
+        // Very janky way of doing it, but it works and we got no time!
+        try {
+            if(DB::table('project_user')->where('user_id', $user->id)->count() == 5) {
+                $canSelectProjects = false;
+            } else {
+                $canSelectProjects = true;
+            }                
+        } catch (Exception $e) {
+            dd($e);
+        }
         
         // Pretty sure there's a more concise way to pass muliple variables but OH WELL
-        return view('projects.index')->with('projects', $projects)->with('user', $user)->with('token', $token);
+        return view('projects.index')->with('projects', $projects)->with('user', $user)->with('token', $token)->with('canSelectProjects', $canSelectProjects);
     }
 
     /**
