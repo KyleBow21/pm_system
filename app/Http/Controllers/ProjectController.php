@@ -128,7 +128,15 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        return view('projects.show')->with('project', $project);
+        if(DB::table('project_user')->where('project_id', $project->id)->count() == $project->project_capacity) {
+            $isProjectFull = true;
+        }
+        else {
+            $isProjectFull = false;
+        }
+
+        $supervisor = User::findOrFail($project->user_id);
+        return view('projects.show')->with('project', $project)->with('supervisor', $supervisor)->with('isProjectFull', $isProjectFull);
     }
 
     /**
@@ -245,16 +253,15 @@ class ProjectController extends Controller
     {
         // Decode the JSON array to something PHP understands
         $selectedProjects = json_decode($request->selected_projects);
+        $user_id = Auth::user()->id;
 
         // For each entry in the array, insert a new record into the "project_user" table
         foreach($selectedProjects as $project_id) {
-            $user_id = Auth::user()->id;
-
             DB::table('project_user')->insertOrIgnore([
                 ['project_id' => $project_id, 'user_id' => $user_id]
             ]);
         }
 
-        return redirect('/projects')->with('success', 'Selected Projects Submitted!');
+        return redirect('/')->with('success', 'Selected Projects Submitted!');
     }
 }

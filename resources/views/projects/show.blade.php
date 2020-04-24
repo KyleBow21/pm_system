@@ -20,24 +20,28 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row mt-5">
-                        <div class="col-md-3">
+                    <div class="row mt-5 text-center">
+                        <div class="col-md-2">
                             <h5><b>Project Name:</b> {{ $project->project_name }}</h5>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h5><b>Project Type:</b> {{  $project->project_type  }}</h5>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h5><b>Project Year:</b> {{  $project->project_year  }}</h5>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             @if(Auth::user()->role == "admin")
                                 <h5><b>Current Capacity: </b>0 / {{ $project->project_capacity }}</h5>
-                            @else
+                            @elseif($isProjectFull == false)
                                 <h5><b>Current Capacity: </b>Not Full</h5>
+                            @else
+                                <h5><b>Current Capacity: </b>Full</h5>
                             @endif
                         </div>
-                        
+                        <div class="col-md-4">
+                            <h5><b>Project Supervisor:</b> {{  $supervisor->name }}</h5>
+                        </div>                        
                     </div>
 
                     <!-- Where the project description is shown. When file uploads are working, maybe switch this to a PDF viewer? -->
