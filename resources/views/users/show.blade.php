@@ -39,7 +39,7 @@
                                 <label>Projects</label>
                                 @if(isset($projects))
                                     @foreach ($projects as $project)
-                                        <li onclick="document.location='projects/{{$project->id}}'" class="project-list my-1">{{ $project->project_name }}<i data-feather="chevron-right"></i></li>
+                                        <li onclick="document.location='/projects/{{$project->id}}'" class="project-list my-1">{{ $project->project_name }}<i data-feather="chevron-right"></i></li>
                                     @endforeach
                                 @else
                                     <li onclick="document.location='projects/'" class="project-list">No Projects!<i data-feather="chevron-right"></i></li>
