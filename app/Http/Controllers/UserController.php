@@ -57,7 +57,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // Show another users profile.
+        $user = User::findOrFail($id);
+        $projects = Project::where('user_id', $user->id)->get();
+        return view('users.show')->with('user', $user)->with('projects', $projects);
     }
 
     /**

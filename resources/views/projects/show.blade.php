@@ -42,7 +42,7 @@
                             @endif
                         </div>
                         <div class="col-md-4">
-                            <h5><b>Project Supervisor:</b> {{  $supervisor->name }}</h5>
+                            <a href="/users/{{$supervisor->id}}"><h5><b>Project Supervisor:</b> {{  $supervisor->name }}</h5></a>
                         </div>                        
                     </div>
 

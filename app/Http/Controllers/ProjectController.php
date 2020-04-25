@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Project;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -139,7 +139,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::find($id);
         if (
             DB::table('project_user')
                 ->where('project_id', $project->id)
@@ -150,7 +150,7 @@ class ProjectController extends Controller
             $isProjectFull = false;
         }
 
-        $supervisor = User::findOrFail($project->user_id);
+        $supervisor = User::find($project->user_id);
         return view('projects.show')
             ->with('project', $project)
             ->with('supervisor', $supervisor)
@@ -166,7 +166,7 @@ class ProjectController extends Controller
     public function edit($id)
     {
         // Redirect the user to the project creation page, but with fields already filled in.
-        $project = Project::findOrFail($id);
+        $project = Project::find($id);
 
         // Check if the user is allowed to edit projects
         if (Gate::allows('edit-project')) {
@@ -254,7 +254,7 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         // Find the project that was selected for deletion
-        $project = Project::findOrFail($id);
+        $project = Project::find($id);
 
         // Check if user is allowed to delete projects
         if (Gate::allows('delete-project')) {
