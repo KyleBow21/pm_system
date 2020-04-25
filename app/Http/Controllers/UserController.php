@@ -18,7 +18,13 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $selectedProject = Project::findOrFail($user->selected_project);
+        try {
+            $selectedProject = Project::find($user->selected_project);
+        }
+        catch (Exception $e) {
+            dd($e);
+            $selectedProject = null;
+        }
         return view('users.index')->with('user', $user)->with('selectedProject', $selectedProject);
     }
 

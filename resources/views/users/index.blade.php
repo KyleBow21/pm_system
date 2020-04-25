@@ -47,7 +47,11 @@
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
                                 <label for="">Selected Project</label>
-                                <li onclick="document.location='projects/{{$selectedProject->id}}'" class="project-list">{{ $selectedProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                @if(isset($selectedProject))
+                                    <li onclick="document.location='projects/{{$selectedProject->id}}'" class="project-list">{{ $selectedProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                @else
+                                    <li onclick="document.location='projects/'" class="project-list">No Project Selected!<i data-feather="chevron-right"></i></li>
+                                @endif
                             </div>
                         </div>
                     </form>
