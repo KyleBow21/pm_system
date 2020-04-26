@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid h-100">
 
-    <div class="row justify-content-center mb-5">
+    <div class="row justify-content-center">
         <div class="col-md-12 px-5">
             <h3 class="page-header">Create Marking Form</h3>
             <div class="card mt-3">
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         {!! Form::open(['action' => 'MarkingFormController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                            <div class="form-row">
+                            <div class="form-row pt-2">
                                 <div class="form-group col">
                                     {{Form::text('studentName', '', ['class' => 'form-control', 'placeholder' => 'Student Name...'])}}
                                 </div>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Qualitative Comparison with Current Tech</label>
-                                    {{Form::select('qual_comp_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('comp_with_tech_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                             </div>
 
@@ -82,15 +82,15 @@
                             <div class="form-row my-5">
                                 <div class="form-group col-4">
                                     <label>Project Definition</label>
-                                    {{Form::select('final_prod_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('proj_def_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Analysis of Problem and Design of Solution</label>
-                                    {{Form::select('work_completed_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('prob_sol_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Testing of Final Product</label>
-                                    {{Form::select('qual_comp_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('final_testing_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                             </div>
 
@@ -99,11 +99,11 @@
                             <div class="form-row my-5">
                                 <div class="form-group col-6">
                                     <label>Evaluation and testing of the work produced</label>
-                                    {{Form::select('final_prod_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('eval_work_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-6">
                                     <label>Critical analysis of the project and potential improvements</label>
-                                    {{Form::select('work_completed_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('crit_analysis_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                             </div>
 
@@ -112,15 +112,15 @@
                             <div class="form-row my-5">
                                 <div class="form-group col-4">
                                     <label>Organisation of the dissertation</label>
-                                    {{Form::select('final_prod_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('org_diss_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>English, grammar and punctuation</label>
-                                    {{Form::select('work_completed_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('lang_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Use of tables, figures and references</label>
-                                    {{Form::select('qual_comp_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('figures_ref_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                             </div>
 
@@ -129,11 +129,11 @@
                             <div class="form-row my-5">
                                 <div class="form-group col-6">
                                     <label>Independance of the work carried out</label>
-                                    {{Form::select('final_prod_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('ind_work_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-6">
                                     <label>Attendance of supervised meetings</label>
-                                    {{Form::select('work_completed_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('attendance_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                             </div>
 
