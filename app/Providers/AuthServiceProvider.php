@@ -25,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // ! Lot's of repeating going on here, will have to optimize
 
         // Gates for project CRUD
         Gate::define('create-project', function($user) {
@@ -41,6 +42,10 @@ class AuthServiceProvider extends ServiceProvider
 
         // Gates for marking form CRUD
         // TODO: Make sure that the user who owns the project creates this form
+        Gate::define('view-marking-forms', function($user) {
+            return $user->role === "staff";
+        });
+
         Gate::define('create-marking-form', function($user) {
             return $user->role === "staff";
         });

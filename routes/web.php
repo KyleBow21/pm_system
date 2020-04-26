@@ -26,6 +26,6 @@ Route::resource('projects', 'ProjectController');
 Route::resource('modules', 'ModuleController');
 Route::resource('assignments', 'AssignmentController');
 Route::resource('users', 'UserController');
-// Route::resource('marks', 'MarkController');
+Route::resource('marks', 'MarksController');
 
 

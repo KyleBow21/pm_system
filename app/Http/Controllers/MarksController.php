@@ -14,7 +14,13 @@ class MarksController extends Controller
      */
     public function index()
     {
-        //
+        // Show all marking forms
+        if(Gate::allows('view-marking-forms')) {
+            // $markingForms = Marks::
+            return view('marks.index');
+        } else {
+            return redirect('/')->with('error', 'Unauthorized!');
+        }
     }
 
     /**
