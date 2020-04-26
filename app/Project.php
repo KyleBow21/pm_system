@@ -20,4 +20,9 @@ class Project extends Model
    {
      return $this->hasMany('App\User');
    }
+
+   public function markingForm()
+   {
+     return $this->hasOne('App\MarkingForm');
+   }
 }

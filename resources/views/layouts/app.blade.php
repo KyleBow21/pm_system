@@ -16,9 +16,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Dynamic form builder jQuery -->
-    <script src="https://formbuilder.online/assets/js/form-builder.min.js" defer></script>
-
     <!-- Feather icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
@@ -43,15 +40,17 @@
                     <a href="{{ route('projects.index') }}">All Projects</a>
                 </li>
                 <!-- Don't like how verbose this is, refine! -->
+                @auth
                 @if(Auth::user()->role === "staff" || Auth::user()->role === "admin")
                 <li>
                     <a href="#markingFormsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Marking Forms</a>
                     <ul class="collapse list-unstyled" id="markingFormsSubmenu">
-                        <a href="{{ route('marks.index') }}">View All Forms</a>
-                        <a href="{{ route('marks.create') }}">Create New Form</a>
+                        <a href="{{ route('marking-forms.index') }}">View All Forms</a>
+                        <a href="{{ route('marking-forms.create') }}">Create New Form</a>
                     </ul>
                 </li>
                 @endif
+                @endauth
             </ul>
         </nav>
         
@@ -102,9 +101,6 @@
             $('#sidebarCollapse').on('click', () => {
                 $('#sidebar').toggleClass('active');
             });
-
-            // init form builder
-            $('#formBuilder').formBuilder();
         });
 
         var selectedProjects = new Array();

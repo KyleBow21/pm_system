@@ -10,8 +10,4 @@ class Marks extends Model
   {
     return $this->BelongsTo('App\Project');
   }
-
-
-
-
 }

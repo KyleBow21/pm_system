@@ -27,5 +27,6 @@ Route::resource('modules', 'ModuleController');
 Route::resource('assignments', 'AssignmentController');
 Route::resource('users', 'UserController');
 Route::resource('marks', 'MarksController');
+Route::resource('marking-forms', 'MarkingFormController');
 
 

@@ -16,7 +16,6 @@ class CreateMarkingFormsTable extends Migration
         Schema::create('marking_forms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('user_id');
 
             // Quality of Product
             $table->string('final_product')->nullable();
@@ -48,9 +47,6 @@ class CreateMarkingFormsTable extends Migration
 
             $table->foreign('project_id')->references('id')
             ->on('projects')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('user_id')->references('id')
-            ->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Marks;
+use App\MarkingForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
-class MarksController extends Controller
+class MarkingFormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +18,7 @@ class MarksController extends Controller
     public function index()
     {
         // Show all marking forms
-        if(Gate::allows('view-marking-forms')) {
-            // $markingForms = Marks::
-            return view('marks.index');
-        } else {
-            return redirect('/')->with('error', 'Unauthorized!');
-        }
+        // Probably won't implement this
     }
 
     /**
@@ -30,12 +28,12 @@ class MarksController extends Controller
      */
     public function create()
     {
-        // If allowed, redirect to create marking form page
-        //if (Gate::allows('create-marking-form')) {
-        //    return view('marks.create');
-        //} else {
-        //    return redirect('/')->with('error', 'Unauthorized');
-        //}
+        // Create a new marking form
+        if(Gate::allows('create-marking-form')) {
+            return view('marking-forms.create');
+        } else {
+            return redirect('/')->with('error', 'Unauthorized');
+        }
     }
 
     /**
@@ -46,51 +44,51 @@ class MarksController extends Controller
      */
     public function store(Request $request)
     {
-        // Store Marking Form to DB
+        // Store the new marking form
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Marks  $marks
+     * @param  \App\MarkingForm  $markingForm
      * @return \Illuminate\Http\Response
      */
-    public function show(Marks $marks)
+    public function show(MarkingForm $markingForm)
     {
-        // Show Marking Form for Project
+        // Show a marking form for a certain project
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Marks  $marks
+     * @param  \App\MarkingForm  $markingForm
      * @return \Illuminate\Http\Response
      */
-    public function edit(Marks $marks)
+    public function edit(MarkingForm $markingForm)
     {
-        // Edit Marking Form for Project
+        // Edit the marking form
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Marks  $marks
+     * @param  \App\MarkingForm  $markingForm
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marks $marks)
+    public function update(Request $request, MarkingForm $markingForm)
     {
-        // 
+        // Update the marking form
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Marks  $marks
+     * @param  \App\MarkingForm  $markingForm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Marks $marks)
+    public function destroy(MarkingForm $markingForm)
     {
-        //
+        // Remove the marking form
     }
 }
