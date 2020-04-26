@@ -28,9 +28,19 @@ class MarkingFormController extends Controller
      */
     public function create()
     {
+        $grades = [
+            '1st*' => '1st*',
+            '1st' => '1st',
+            '2.1' => '2.1',
+            '2.2' => '2.2',
+            '3rd' => '3rd',
+            'tol_fail' => 'Tolerated Fail',
+            'fail' => 'Fail',
+            'n/a' => 'N/A'
+        ];
         // Create a new marking form
         if(Gate::allows('create-marking-form')) {
-            return view('marking-forms.create');
+            return view('marking-forms.create')->with('grades', $grades);
         } else {
             return redirect('/')->with('error', 'Unauthorized');
         }
