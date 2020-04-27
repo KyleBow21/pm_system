@@ -20,19 +20,19 @@
                         {!! Form::open(['action' => 'MarkingFormController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                             <div class="form-row pt-2">
                                 <div class="form-group col">
-                                    {{Form::text('studentName', '', ['class' => 'form-control', 'placeholder' => 'Student Name...'])}}
+                                    {{Form::text('student_name', '', ['class' => 'form-control', 'placeholder' => 'Student Name...'])}}
                                 </div>
                                 <div class="form-group col">
-                                    {{Form::text('projectId', '', ['class' => 'form-control', 'placeholder' => 'Project ID...'])}}
+                                    {{Form::text('project_id', '', ['class' => 'form-control', 'placeholder' => 'Project ID...'])}}
                                 </div>
                                 <div class="form-group col">
-                                    {{Form::text('markersEmail', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Email...'])}}
+                                    {{Form::text('markers_email', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Email...'])}}
                                 </div>
                                 <div class="form-group col">
-                                    {{Form::text('markersType', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Type...'])}}
+                                    {{Form::text('markers_type', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Type...'])}}
                                 </div>
                                 <div class="form-group col">
-                                    {{Form::text('moduleCode', '', ['class' => 'form-control', 'placeholder' => 'Module Code...'])}}
+                                    {{Form::text('module_code', '', ['class' => 'form-control', 'placeholder' => 'Module Code...'])}}
                                 </div>
                             </div>
                     </div>
