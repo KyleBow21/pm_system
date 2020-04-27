@@ -136,10 +136,15 @@ class MarkingFormController extends Controller
      * @param  \App\MarkingForm  $markingForm
      * @return \Illuminate\Http\Response
      */
-    public function show(MarkingForm $markingForm)
+    public function show($id)
     {
         // Show a marking form for a certain project
-        
+        $markingForm = MarkingForm::find($id);
+        if(Gate::allows('view-marking-forms')) {
+            return view('marking-forms.show')->with('markingForm', $markingForm);
+        } else {
+            return redirect('/')->with('error', 'Unauthorized!');
+        }
     }
 
     /**

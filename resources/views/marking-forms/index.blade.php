@@ -43,12 +43,12 @@
                             </thead>
                                 <tbody id="tbody">
                                     @foreach ($markingForms as $markingForm)
-                                    <tr id="{{$markingForm->id}}" style="cursor:hand">
+                                        <tr id="{{$markingForm->id}}" style="cursor:hand" onclick="document.location='/marking-forms/{{$markingForm->id}}'">
                                             <!-- This mess of "onclick" is the only way I can think of re-directing at the moment -->
-                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'">{{$markingForm->project_id}}</td>
-                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'">{{$markingForm->markers_email}}</td>
-                                            <td scope="col" class="col-9 text-truncate" onclick="document.location='/projects/'">{{$markingForm->module_code}}</td>
-                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'">{{$markingForm->final_mark}}</td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='/marking-forms/'">{{$markingForm->project_id}}</td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='/marking-forms/'">{{$markingForm->markers_email}}</td>
+                                            <td scope="col" class="col-9 text-truncate" onclick="document.location='/marking-forms/'">{{$markingForm->module_code}}</td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='/marking-forms/'">{{$markingForm->final_mark}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
