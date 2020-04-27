@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">Email</label>
-                                <input class="form-control" type="text" disabled value="{{ $user->email }}">
+                                <input class="form-control" type="text" disabled value="{{ $user->email }}" onclick="mailto:{{ $user->email }}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">Role</label>
@@ -39,10 +39,10 @@
                                 <label>Projects</label>
                                 @if(isset($projects))
                                     @foreach ($projects as $project)
-                                        <li onclick="document.location='/projects/{{$project->id}}'" class="project-list my-1">{{ $project->project_name }}<i data-feather="chevron-right"></i></li>
+                                        <li onclick="document.location='/projects/{{$project->id}}'" class="project-list form-control mb-1">{{ $project->project_name }}<i data-feather="chevron-right"></i></li>
                                     @endforeach
                                 @else
-                                    <li onclick="document.location='projects/'" class="project-list">No Projects!<i data-feather="chevron-right"></i></li>
+                                    <li onclick="document.location='projects/'" class="project-list form-control">No Projects!<i data-feather="chevron-right"></i></li>
                                 @endif
                             </div>
                         </div>

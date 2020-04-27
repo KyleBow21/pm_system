@@ -44,37 +44,46 @@
                                 <input class="form-control" type="text" disabled value="{{ $user->api_token }}">
                             </div>
                         </div>
+
+                        <!-- Projects area, what a mess! -->
+                        <!-- Supervisor -->
+                        @if(Auth::user()->role === "staff" || Auth::user()->role === "admin")
+                        <label>Projects</label>
+                            @if(isset($ownedProjects))
+                                @foreach($ownedProjects as $ownedProject)
+                                    <div class="form-row mb-3">
+                                        <div class="form-group col-md-10">
+                                            <li onclick="document.location='projects/{{ $ownedProject->id }}'" class="project-list form-control mb-1">{{ $ownedProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <button id="{{ $ownedProject->id}}" class="btn btn-primary form-control" onclick="markProject(this.id)">Mark Project</button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endif
+
+                        <!-- Student -->
+                        @if(Auth::user()->role === "student")
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
-                                @if(Auth::user()->role === "staff" || Auth::user()->role === "admin")
-                                    <label>Projects</label>
-                                    @if(isset($ownedProjects))
-                                        @foreach ($ownedProjects as $ownedProject)
-                                            <li onclick="document.location='projects/{{ $ownedProject->id }}'" class="project-list my-1">{{ $ownedProject->project_name }}<i data-feather="chevron-right"></i></li>
-                                        @endforeach
-                                    @else
-                                        <li onclick="document.location='projects/'" class="project-list">No Projects!<i data-feather="chevron-right"></i></li>
-                                    @endif
-                                @else
                                 <label>Preferred Projects</label>
                                 @if(isset($preferredProjects))
                                     @foreach ($preferredProjects as $preferredProject)
-                                        <li onclick="document.location='projects/{{ $preferredProject->id }}'" class="project-list my-1">{{ $preferredProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                        <li onclick="document.location='projects/{{ $preferredProject->id }}'" class="project-list form-control mb-1">{{ $preferredProject->project_name }}<i data-feather="chevron-right"></i></li>
                                     @endforeach
                                 @else
-                                    <li onclick="document.location='projects/'" class="project-list">No Projects Selected!<i data-feather="chevron-right"></i></li>
-                                @endif
+                                    <li onclick="document.location='projects/'" class="project-list form-control">No Projects Selected!<i data-feather="chevron-right"></i></li>
                                 @endif
                             </div>
                         </div>
-                        @if(Auth::user()->role === "student")
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
                                 <label for="">Selected Project</label>
                                 @if(isset($selectedProject))
-                                    <li onclick="document.location='projects/{{$selectedProject->id}}'" class="project-list">{{ $selectedProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                    <li onclick="document.location='projects/{{$selectedProject->id}}'" class="project-list form-control">{{ $selectedProject->project_name }}<i data-feather="chevron-right"></i></li>
                                 @else
-                                    <li onclick="document.location='projects/'" class="project-list">No Project Selected!<i data-feather="chevron-right"></i></li>
+                                    <li onclick="document.location='projects/'" class="project-list form-control">No Project Selected!<i data-feather="chevron-right"></i></li>
                                 @endif
                             </div>
                         </div>

@@ -289,7 +289,6 @@ tr {
 
 .project-list {
     font-family: CircularStd;
-    padding: 10px;
     padding-right: 0px;
     display: grid;
     grid-template-columns: 10fr 1fr;
@@ -297,13 +296,16 @@ tr {
     font-size: 14px;
     grid-gap: 10px;
     cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
 
 .project-list:hover {
     background: rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
+}
+
+.project-list-btn {
+    padding: 10px;
 }
 
 .feather {
