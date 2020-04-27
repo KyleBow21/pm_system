@@ -47,7 +47,7 @@ class CreateMarkingFormsTable extends Migration
             $table->string('attendance_grade');
 
             // Overall comments & final mark
-            $table->string('comments');
+            $table->longtext('comments');
             $table->string('final_mark');
 
             // Misc
