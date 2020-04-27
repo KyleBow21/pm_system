@@ -125,7 +125,7 @@
                             <h4 class="section-header">Comments & Final Mark</h4>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <textarea class="form-control" disabled>
+                                    <textarea class="form-control" rows="15" disabled>
                                         {{$markingForm->comments}}
                                     </textarea>
                                 </div>
