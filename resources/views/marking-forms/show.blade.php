@@ -136,7 +136,7 @@
                                 </div>
                                 <!-- Convert page to PDF -->
                                 <div class="form-group col-4">
-                                    <a class="btn btn-info form-control" href="/marking-forms/{{$markingForm->id}}/pdf">Export to PDF</a>
+                                    <a class="btn btn-info form-control" href="javascript:window.print()" id="print">Print to PDF</a>
                                 </div>
                             </div>
                         </div>
