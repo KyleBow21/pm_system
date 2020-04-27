@@ -29,25 +29,25 @@ class AuthServiceProvider extends ServiceProvider
 
         // Gates for project CRUD
         Gate::define('create-project', function($user) {
-            return $user->role === "admin";
+            return $user->role === "admin" || $user->role === "staff";
         });
 
         Gate::define('update-project', function($user) {
-            return $user->role === "admin";
+            return $user->role === "admin" || $user->role === "staff";
         });
 
         Gate::define('delete-project', function($user) {
-            return $user->role === "admin";
+            return $user->role === "admin" || $user->role === "staff";
         });
 
         // Gates for marking form CRUD
         // TODO: Make sure that the user who owns the project creates this form
         Gate::define('view-marking-forms', function($user) {
-            return $user->role === "staff";
+            return $user->role === "staff" || $user->role === "admin";
         });
 
         Gate::define('create-marking-form', function($user) {
-            return $user->role === "staff";
+            return $user->role === "staff" || $user->role === "admin";
         });
 
         Gate::define('update-marking-form', function($user) {

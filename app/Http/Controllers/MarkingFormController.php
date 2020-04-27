@@ -18,7 +18,12 @@ class MarkingFormController extends Controller
     public function index()
     {
         // Show all marking forms
-        // Probably won't implement this
+        if(Gate::allows('view-marking-forms')) {
+            $markingForms = MarkingForm::orderBy('id', 'asc')->get();
+            return view('marking-forms.index')->with('markingForms', $markingForms);
+        } else {
+            return redirect('/')->with('error', 'Unauthorized');
+        }
     }
 
     /**
@@ -38,6 +43,7 @@ class MarkingFormController extends Controller
             'fail' => 'Fail',
             'n/a' => 'N/A'
         ];
+
         // Create a new marking form
         if(Gate::allows('create-marking-form')) {
             return view('marking-forms.create')->with('grades', $grades);
@@ -133,6 +139,7 @@ class MarkingFormController extends Controller
     public function show(MarkingForm $markingForm)
     {
         // Show a marking form for a certain project
+        
     }
 
     /**

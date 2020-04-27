@@ -130,12 +130,17 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-10">
+                                <div class="form-group col-8">
                                     {{ Form::text('final_mark', '', ['class' => 'form-control', 'placeholder' => 'Final Mark...']) }}
                                     <!--<textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>-->
                                 </div>
                                 <div class="form-group col-2">
                                     {{ Form::submit('Submit', ['class' => 'btn btn-success form-control'])}}
+                                    <!--<textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>-->
+                                </div>
+                                <!-- Convert page to PDF -->
+                                <div class="form-group col-2">
+                                    <a class="btn btn-info form-control" href="/marking-forms/pdf">Export to PDF</a>
                                     <!--<textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>-->
                                 </div>
                             </div>

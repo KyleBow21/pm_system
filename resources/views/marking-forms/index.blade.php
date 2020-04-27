@@ -35,16 +35,20 @@
                             <thead>
                                 <tr>
                                     <!-- Overview of all the details of the form? -->
+                                    <th scope="col" class="col-1 w-25">Project ID</th>
+                                    <th scope="col" class="col-1 w-25">Marker's Email</th>
+                                    <th scope="col" class="col-9">Module Code</th>
+                                    <th scope="col" class="col-1 w-25">Final Mark</th>
                                 </tr>
                             </thead>
                                 <tbody id="tbody">
-                                    @foreach ($projects as $project)
-                                        <tr id="{{$project->id}}" style="cursor:hand">
+                                    @foreach ($markingForms as $markingForm)
+                                    <tr id="{{$markingForm->id}}" style="cursor:hand">
                                             <!-- This mess of "onclick" is the only way I can think of re-directing at the moment -->
-                                            <th scope="col" class="col-1 w-25"><input type="checkbox" name="" onchange="projectChecked(this.name)"></td>
-                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'"></td>
-                                            <td scope="col" class="col-9 text-truncate" onclick="document.location='/projects/'"></td>
-                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'"></td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'">{{$markingForm->project_id}}</td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'">{{$markingForm->markers_email}}</td>
+                                            <td scope="col" class="col-9 text-truncate" onclick="document.location='/projects/'">{{$markingForm->module_code}}</td>
+                                            <td scope="col" class="col-1 w-25" onclick="document.location='/projects/'">{{$markingForm->final_mark}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
