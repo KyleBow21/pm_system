@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Project;
@@ -18,14 +19,28 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
+
+        // Get the users preferred projects
+        try {
+            $preferredProjectIds = DB::table('project_user')->where('user_id', $user->id)->get();
+            $preferredProjects = collect();
+            foreach ($preferredProjectIds as $id) {
+                $preferredProjects->push(Project::find($id->project_id));  
+            }
+        } catch (Exception $e) {
+            dump($e);
+            $preferredProjects = null;
+        }
+        
+        // Get the users selected project
         try {
             $selectedProject = Project::find($user->selected_project);
         }
         catch (Exception $e) {
-            dd($e);
+            dump($e);
             $selectedProject = null;
         }
-        return view('users.index')->with('user', $user)->with('selectedProject', $selectedProject);
+        return view('users.index')->with('user', $user)->with('selectedProject', $selectedProject)->with('preferredProjects', $preferredProjects);
     }
 
     /**

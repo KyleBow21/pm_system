@@ -56,6 +56,5 @@ class HomeController extends Controller
             // Will always return the user to the login page if they are not logged in (only applicable to the home page here!)
             return view('login');
         }
-
     }
 }

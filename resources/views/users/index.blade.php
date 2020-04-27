@@ -46,6 +46,18 @@
                         </div>
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
+                                <label for="">Preferred Projects</label>
+                                @if(isset($preferredProjects))
+                                @foreach ($preferredProjects as $preferredProject)
+                                    <li onclick="document.location='projects/{{$preferredProject->project_id}}'" class="project-list my-1">{{ $preferredProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                @endforeach
+                                @else
+                                    <li onclick="document.location='projects/'" class="project-list">No Projects Selected!<i data-feather="chevron-right"></i></li>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row mt-3">
+                            <div class="form-group col-md-12">
                                 <label for="">Selected Project</label>
                                 @if(isset($selectedProject))
                                     <li onclick="document.location='projects/{{$selectedProject->id}}'" class="project-list">{{ $selectedProject->project_name }}<i data-feather="chevron-right"></i></li>
