@@ -353,3 +353,22 @@ tr {
         transform: translate(3px);
     }
 }
+
+// Potential way to print to PDF natively?
+@media print {
+    #sidebar {
+        display: none;
+    }
+
+    #content {
+        width: 100%;
+    }
+
+    html {
+        font-size: 13px;
+    }
+
+    .btn {
+        display: none;
+    }
+}

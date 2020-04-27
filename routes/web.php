@@ -29,4 +29,4 @@ Route::resource('users', 'UserController');
 Route::resource('marks', 'MarksController');
 Route::resource('marking-forms', 'MarkingFormController');
 
-
+Route::get('/marking-forms/{id}/pdf', 'MarkingFormController@printToPdf');

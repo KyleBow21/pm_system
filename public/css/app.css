@@ -11235,3 +11235,21 @@ tr {
   }
 }
 
+@media print {
+  #sidebar {
+    display: none;
+  }
+
+  #content {
+    width: 100%;
+  }
+
+  html {
+    font-size: 13px;
+  }
+
+  .btn {
+    display: none;
+  }
+}
+

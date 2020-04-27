@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
+use PDF;
+
 class MarkingFormController extends Controller
 {
     /**
@@ -179,5 +181,14 @@ class MarkingFormController extends Controller
     public function destroy(MarkingForm $markingForm)
     {
         // Remove the marking form
+    }
+
+    public function printToPdf($id) 
+    {
+        $data = MarkingForm::find($id)->toArray();
+        // Make a gate here
+
+        $pdf = PDF::loadView('marking-forms.pdf', $data);
+        return $pdf->download('marking-form.pdf');
     }
 }
