@@ -20,27 +20,40 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
+        // Get the users owned projects (supervisor only)
+        try {
+            $ownedProjects = DB::table('projects')->where('user_id', $user->id)->get();
+        } catch (Exception $e) {
+            dump($e);
+            $ownedProjects = null;
+        }
+
         // Get the users preferred projects
         try {
-            $preferredProjectIds = DB::table('project_user')->where('user_id', $user->id)->get();
+            $preferredProjectIds = DB::table('project_user')
+                ->where('user_id', $user->id)
+                ->get();
             $preferredProjects = collect();
             foreach ($preferredProjectIds as $id) {
-                $preferredProjects->push(Project::find($id->project_id));  
+                $preferredProjects->push(Project::find($id->project_id));
             }
         } catch (Exception $e) {
             dump($e);
             $preferredProjects = null;
         }
-        
+
         // Get the users selected project
         try {
             $selectedProject = Project::find($user->selected_project);
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             dump($e);
             $selectedProject = null;
         }
-        return view('users.index')->with('user', $user)->with('selectedProject', $selectedProject)->with('preferredProjects', $preferredProjects);
+        return view('users.index')
+            ->with('user', $user)
+            ->with('selectedProject', $selectedProject)
+            ->with('preferredProjects', $preferredProjects)
+            ->with('ownedProjects', $ownedProjects);
     }
 
     /**
@@ -75,7 +88,9 @@ class UserController extends Controller
         // Show another users profile.
         $user = User::findOrFail($id);
         $projects = Project::where('user_id', $user->id)->get();
-        return view('users.show')->with('user', $user)->with('projects', $projects);
+        return view('users.show')
+            ->with('user', $user)
+            ->with('projects', $projects);
     }
 
     /**

@@ -46,16 +46,28 @@
                         </div>
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
-                                <label for="">Preferred Projects</label>
+                                @if(Auth::user()->role === "staff" || Auth::user()->role === "admin")
+                                    <label>Projects</label>
+                                    @if(isset($ownedProjects))
+                                        @foreach ($ownedProjects as $ownedProject)
+                                            <li onclick="document.location='projects/{{ $ownedProject->id }}'" class="project-list my-1">{{ $ownedProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                        @endforeach
+                                    @else
+                                        <li onclick="document.location='projects/'" class="project-list">No Projects!<i data-feather="chevron-right"></i></li>
+                                    @endif
+                                @else
+                                <label>Preferred Projects</label>
                                 @if(isset($preferredProjects))
-                                @foreach ($preferredProjects as $preferredProject)
-                                    <li onclick="document.location='projects/{{$preferredProject->project_id}}'" class="project-list my-1">{{ $preferredProject->project_name }}<i data-feather="chevron-right"></i></li>
-                                @endforeach
+                                    @foreach ($preferredProjects as $preferredProject)
+                                        <li onclick="document.location='projects/{{ $preferredProject->id }}'" class="project-list my-1">{{ $preferredProject->project_name }}<i data-feather="chevron-right"></i></li>
+                                    @endforeach
                                 @else
                                     <li onclick="document.location='projects/'" class="project-list">No Projects Selected!<i data-feather="chevron-right"></i></li>
                                 @endif
+                                @endif
                             </div>
                         </div>
+                        @if(Auth::user()->role === "student")
                         <div class="form-row mt-3">
                             <div class="form-group col-md-12">
                                 <label for="">Selected Project</label>
@@ -66,6 +78,7 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
                     </form>
                 </div>
             </div>
