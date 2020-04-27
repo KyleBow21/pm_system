@@ -54,22 +54,21 @@ class MarkingFormController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         // Validate the form
         $this->validate($request, [
-            'studentName' => 'required',
+            'student_name' => 'required',
             'project_id' => 'required|integer',
             'markers_email' => 'required',
             'markers_type' => 'required',
             'module_code' => 'required',
-            'final_prod_grade' => 'required',
+            'final_product_grade' => 'required',
             'work_completed_grade' => 'required',
             'comp_with_tech_grade' => 'required',
-            'proj_def_grade' => 'required',
-            'prob_sol_grade' => 'required',
+            'proj_definition_grade' => 'required',
+            'problem_solution_grade' => 'required',
             'final_testing_grade' => 'required',
             'eval_work_grade' => 'required',
-            'crit_analysis_grade' => 'required',
+            'critical_analysis_grade' => 'required',
             'org_diss_grade' => 'required',
             'lang_grade' => 'required',
             'figures_ref_grade' => 'required',
@@ -78,47 +77,46 @@ class MarkingFormController extends Controller
             'comments' => 'string',
             'final_mark' => 'required|integer'
         ]);
-        dd("Past Validation");
 
         // Create a new Marking Form instance and save to DB
         $form = new MarkingForm();
 
         // Project Information
-        $form->student_name = $request->input('project_id');
+        $form->project_id = $request->input('project_id');
         $form->student_name = $request->input('student_name');
-        $form->student_name = $request->input('markers_email');
-        $form->student_name = $request->input('markers_type');
-        $form->student_name = $request->input('module_code');
+        $form->markers_email = $request->input('markers_email');
+        $form->markers_type = $request->input('markers_type');
+        $form->module_code = $request->input('module_code');
 
         // Quality of Product
-        $form->student_name = $request->input('final_product_grade');
-        $form->student_name = $request->input('work_completed_grade');
-        $form->student_name = $request->input('comp_with_tech_grade');
+        $form->final_product_grade = $request->input('final_product_grade');
+        $form->work_completed_grade = $request->input('work_completed_grade');
+        $form->comp_with_tech_grade = $request->input('comp_with_tech_grade');
 
         // Quality of Processes
-        $form->student_name = $request->input('proj_definition_grade');
-        $form->student_name = $request->input('problem_solution_grade');
-        $form->student_name = $request->input('final_testing_grade');
+        $form->proj_definition_grade = $request->input('proj_definition_grade');
+        $form->problem_solution_grade = $request->input('problem_solution_grade');
+        $form->final_testing_grade = $request->input('final_testing_grade');
 
         // Quality of Evaluation
-        $form->student_name = $request->input('eval_work_grade');
-        $form->student_name = $request->input('critical_analysis_grade');
+        $form->eval_work_grade = $request->input('eval_work_grade');
+        $form->critical_analysis_grade = $request->input('critical_analysis_grade');
 
         // Quality of Presentation
-        $form->student_name = $request->input('org_diss_grade');
-        $form->student_name = $request->input('lang_grade');
-        $form->student_name = $request->input('figures_ref_grade');
+        $form->org_diss_grade = $request->input('org_diss_grade');
+        $form->lang_grade = $request->input('lang_grade');
+        $form->figures_ref_grade = $request->input('figures_ref_grade');
 
         // Supervisor only
-        $form->student_name = $request->input('ind_work_grade');
-        $form->student_name = $request->input('attendance_grade');
+        $form->ind_work_grade = $request->input('ind_work_grade');
+        $form->attendance_grade = $request->input('attendance_grade');
 
         // Overall comments & final mark
-        $form->student_name = $request->input('comments');
-        $form->student_name = $request->input('final_mark');
+        $form->comments = $request->input('comments');
+        $form->final_mark = $request->input('final_mark');
         
         // Misc
-        $form->student_name = $request->input('is_technical');
+        $form->is_technical = $request->input('is_technical');
 
         // Commit the instance to the DB
         $form->save();

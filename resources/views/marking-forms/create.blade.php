@@ -2,44 +2,9 @@
 
 @section('content')
 <div class="container-fluid h-100">
-
     <div class="row justify-content-center">
         <div class="col-md-12 px-5">
             <h3 class="page-header">Create Marking Form</h3>
-            <div class="card mt-3">
-                <div class="card-header">
-                    Project Details
-                </div>
-
-                <div class="card-body">
-                @if(isset($autofill))
-                <!-- If autofill contains data, fill the project details with it -->
-                @else
-                <div class="row">
-                    <div class="col-md-12">
-                        {!! Form::open(['action' => 'MarkingFormController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-                            <div class="form-row pt-2">
-                                <div class="form-group col">
-                                    {{Form::text('student_name', '', ['class' => 'form-control', 'placeholder' => 'Student Name...'])}}
-                                </div>
-                                <div class="form-group col">
-                                    {{Form::text('project_id', '', ['class' => 'form-control', 'placeholder' => 'Project ID...'])}}
-                                </div>
-                                <div class="form-group col">
-                                    {{Form::text('markers_email', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Email...'])}}
-                                </div>
-                                <div class="form-group col">
-                                    {{Form::text('markers_type', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Type...'])}}
-                                </div>
-                                <div class="form-group col">
-                                    {{Form::text('module_code', '', ['class' => 'form-control', 'placeholder' => 'Module Code...'])}}
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                @endif
-                </div>
-            </div>
         </div>
     </div>
 
@@ -60,12 +25,31 @@
                     <!-- TODO: Could do with some better structure -->
                     <div class="row">
                         <div class="col-md-12">
+                            {!! Form::open(['action' => 'MarkingFormController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                            <h4 class="section-header">Project Information</h4>
+                            <div class="form-row my-4">
+                                <div class="form-group col">
+                                    {{Form::text('student_name', '', ['class' => 'form-control', 'placeholder' => 'Student Name...'])}}
+                                </div>
+                                <div class="form-group col">
+                                    {{Form::text('project_id', '', ['class' => 'form-control', 'placeholder' => 'Project ID...'])}}
+                                </div>
+                                <div class="form-group col">
+                                    {{Form::text('markers_email', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Email...'])}}
+                                </div>
+                                <div class="form-group col">
+                                    {{Form::text('markers_type', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Type...'])}}
+                                </div>
+                                <div class="form-group col">
+                                    {{Form::text('module_code', '', ['class' => 'form-control', 'placeholder' => 'Module Code...'])}}
+                                </div>
+                            </div>
                             <!-- Quality of Product -->
                             <h4 class="section-header">Quality of Product (25%)</h4>
                             <div class="form-row my-5">
                                 <div class="form-group col-4">
                                     <label>Final Product Delivered</label>
-                                    {{Form::select('final_prod_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('final_product_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Amount of Work Completed</label>
@@ -82,11 +66,11 @@
                             <div class="form-row my-5">
                                 <div class="form-group col-4">
                                     <label>Project Definition</label>
-                                    {{Form::select('proj_def_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('proj_definition_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Analysis of Problem and Design of Solution</label>
-                                    {{Form::select('prob_sol_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('problem_solution_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                                 <div class="form-group col-4">
                                     <label>Testing of Final Product</label>
@@ -103,7 +87,7 @@
                                 </div>
                                 <div class="form-group col-6">
                                     <label>Critical analysis of the project and potential improvements</label>
-                                    {{Form::select('crit_analysis_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
+                                    {{Form::select('critical_analysis_grade', $grades, null, ['class' => 'form-control', 'placeholder' => 'Grade...'])}}
                                 </div>
                             </div>
 

@@ -18,37 +18,37 @@ class CreateMarkingFormsTable extends Migration
             
             // Project Information
             $table->unsignedBigInteger('project_id');
-            $table->string('student_name')->nullable();
-            $table->string('markers_email')->nullable();
-            $table->string('markers_type')->nullable();
-            $table->string('module_code')->nullable();
+            $table->string('student_name');
+            $table->string('markers_email');
+            $table->string('markers_type');
+            $table->string('module_code');
 
             // Quality of Product
-            $table->string('final_product_grade')->nullable();
-            $table->string('work_completed_grade')->nullable();
-            $table->string('comp_with_tech_grade')->nullable();
+            $table->string('final_product_grade');
+            $table->string('work_completed_grade');
+            $table->string('comp_with_tech_grade');
 
             // Quality of Processes
-            $table->string('proj_definition_grade')->nullable();
-            $table->string('problem_solution_grade')->nullable();
-            $table->string('final_testing_grade')->nullable();
+            $table->string('proj_definition_grade');
+            $table->string('problem_solution_grade');
+            $table->string('final_testing_grade');
 
             // Quality of Evaluation
-            $table->string('eval_work_grade')->nullable();
-            $table->string('critical_analysis_grade')->nullable();
+            $table->string('eval_work_grade');
+            $table->string('critical_analysis_grade');
             
             // Quality of Presentation
-            $table->string('org_diss_grade')->nullable();
-            $table->string('lang_grade')->nullable();
-            $table->string('figures_ref_grade')->nullable();
+            $table->string('org_diss_grade');
+            $table->string('lang_grade');
+            $table->string('figures_ref_grade');
 
             // Supervisor only
-            $table->string('ind_work_grade')->nullable();
-            $table->string('attendance_grade')->nullable();
+            $table->string('ind_work_grade');
+            $table->string('attendance_grade');
 
             // Overall comments & final mark
-            $table->string('comments')->nullable();
-            $table->string('final_mark')->nullable();
+            $table->string('comments');
+            $table->string('final_mark');
 
             // Misc
             $table->string('is_technical')->nullable();

@@ -57,7 +57,7 @@
         <main class="" id="content">
             @include('inc.navbar')
             <div class="py-4"></div>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col">
                         @include('inc.messages')

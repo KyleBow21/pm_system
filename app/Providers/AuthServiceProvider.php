@@ -51,11 +51,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('create-marking-form', function($user) {
-            if($user->role === "staff") {
-                return "admin";
-            } else {
-                return "staff";
-            }
+            return $user->role === "admin";
         });
 
         Gate::define('update-marking-form', function($user) {
