@@ -130,7 +130,7 @@ class MarkingFormController extends Controller
         // Commit the instance to the DB
         $form->save();
 
-        return redirect('/')->with('success', 'Marked Successfully!');
+        return redirect('/marking-forms')->with('success', 'Marked Successfully!');
     }
 
     /**
