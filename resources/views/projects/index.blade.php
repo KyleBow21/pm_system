@@ -68,11 +68,13 @@
                                 </tbody>
                         </table>
                     </div>
+                    @if(Auth::user()->role === "student")
                     <div class="row">
                         <div class="col">
                             <small>Please select 5 projects then click submit</small>
                         </div>
                     </div>
+                    @endif
                     @endauth
                 </div>
             </div>
