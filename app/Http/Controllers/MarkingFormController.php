@@ -45,7 +45,7 @@ class MarkingFormController extends Controller
             'fail' => 'Fail',
             'n/a' => 'N/A'
         ];
-        $projects = Project::orderBy('id', 'asc')->pluck('id', 'project_name')->toArray();
+        $projects = Project::orderBy('id', 'asc')->pluck('id')->toArray();
 
         // Create a new marking form
         if(Gate::allows('create-marking-form')) {
