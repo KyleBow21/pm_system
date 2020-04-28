@@ -49,7 +49,7 @@
                         <label>Projects</label>
                             @if(isset($ownedProjects))
                                 @foreach($ownedProjects as $ownedProject)
-                                    <div class="form-row mb-3">
+                                    <div class="form-row">
                                         <div class="form-group col-md-10">
                                             <li onclick="document.location='projects/{{ $ownedProject->id }}'" class="project-list form-control mb-1">{{ $ownedProject->project_name }}<i data-feather="chevron-right"></i></li>
                                         </div>
@@ -92,17 +92,6 @@
                                     <li onclick="document.location='marking-forms/{{$marks->id}}'" class="project-list form-control">Project ID: {{ $marks->project_id }} | Final Mark: {{ $marks->final_mark }}<i data-feather="chevron-right"></i></li>
                                 @else
                                     <li class="project-list form-control">No Project Feedback!</li>
-                                @endif
-                            </div>
-                        </div>
-                        @elseif(Auth::user()->role === "staff" || Auth::user()->role === "admin")
-                        <div class="form-row mt-3">
-                            <div class="form-group col-md-12">
-                                <label for="">Projects</label>
-                                @if(isset($ownedProjects))
-                                    <li onclick="document.location='projects/{{$ownedProjects->id}}'" class="project-list form-control">{{ $ownedProjects->project_name }}<i data-feather="chevron-right"></i></li>
-                                @else
-                                    <li onclick="document.location='projects/'" class="project-list form-control">No Projects!<i data-feather="chevron-right"></i></li>
                                 @endif
                             </div>
                         </div>
