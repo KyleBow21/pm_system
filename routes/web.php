@@ -11,13 +11,10 @@
 |
 */
 
-// TODO: Tie up all routes to at least the projects and assignments pages
-// ! Auth must be implemented
 Auth::routes(['verify' => true]);
 
 Route::get('/profile', 'UserController@index')->name('users.profile');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'UserController@index')->name('home');
 
 // ? Maps the default RESTful actions to each controller
 Route::resource('projects', 'ProjectController');
@@ -28,5 +25,3 @@ Route::resource('assignments', 'AssignmentController');
 Route::resource('users', 'UserController');
 Route::resource('marks', 'MarksController');
 Route::resource('marking-forms', 'MarkingFormController');
-
-Route::get('/marking-forms/{id}/pdf', 'MarkingFormController@printToPdf');

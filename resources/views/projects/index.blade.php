@@ -46,7 +46,7 @@
                         </div>
                     </form>
                     <div class="table-responsive">
-                        <table class="table table-hover" id="projectsTable">
+                        <table class="table table-hover border" id="projectsTable">
                             <thead>
                                 <tr>
                                     <th scope="col" class="col-1 w-25">&nbsp;</th>
@@ -67,6 +67,11 @@
                                     @endforeach
                                 </tbody>
                         </table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <small>Please select 5 projects then click submit</small>
+                        </div>
                     </div>
                     @endauth
                 </div>

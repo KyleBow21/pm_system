@@ -18,49 +18,50 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Project Details</h3>
+                            <h3 class="section-header">Project Details</h3>
                         </div>
                     </div>
-                    <hr>
                     <div class="row mt-5 text-center">
                         <div class="col-md-2">
-                            <h5><b>Project Name:</b> {{ $project->project_name }}</h5>
+                            <h5><b>Name:</b> {{ $project->project_name }}</h5>
                         </div>
                         <div class="col-md-2">
-                            <h5><b>Project Type:</b> {{  $project->project_type  }}</h5>
+                            <h5><b>Type:</b> {{  $project->project_type  }}</h5>
                         </div>
                         <div class="col-md-2">
-                            <h5><b>Project Year:</b> {{  $project->project_year  }}</h5>
+                            <h5><b>Year:</b> {{  $project->project_year  }}</h5>
                         </div>
                         <div class="col-md-2">
                             @if(Auth::user()->role == "admin")
-                                <h5><b>Current Capacity: </b>0 / {{ $project->project_capacity }}</h5>
+                                <h5><b> Capacity: </b>0 / {{ $project->project_capacity }}</h5>
                             @elseif($isProjectFull == false)
-                                <h5><b>Current Capacity: </b>Not Full</h5>
+                                <h5><b> Capacity: </b>Not Full</h5>
                             @else
-                                <h5><b>Current Capacity: </b>Full</h5>
+                                <h5><b> Capacity: </b>Full</h5>
                             @endif
                         </div>
                         <div class="col-md-4">
-                            <a href="/users/{{$supervisor->id}}"><h5><b>Project Supervisor:</b> {{  $supervisor->name }}</h5></a>
+                            <a href="/users/{{$supervisor->id}}"><h5><b>Supervisor:</b> {{  $supervisor->name }}</h5></a>
                         </div>                        
                     </div>
 
                     <!-- Where the project description is shown. When file uploads are working, maybe switch this to a PDF viewer? -->
                     <div class="row text-justify mt-5">
                         <div class="col-md-12">
-                            <h3>Project Description</h3>
-                            <hr>
+                            <h3 class="section-header mb-4">Project Description</h3>
                                 <p>{{ $project->project_description }}</p>
                         </div>
                     </div>
                     <!-- Make this section scrollable if there isn't enough space to display normally -->
                     <div class="row text-justify mt-5">
                         <div class="col-md-12">
-                            <h3>Project Attachment</h3>
-                            <hr>
+                            <h3 class="section-header">Project Attachment</h3>
                             <!-- Need to make this all responsive, kinda broke at the moment but it does display the attachment -->
-                            <embed class="embed-responsive w-100 h-100" src="/storage/docs/{{$project->project_attachment}}" alt="No Attachment!"/>
+                            @if(isset($project->project_attachment))
+                                <embed class="embed-responsive w-100 h-100" src="/storage/docs/{{$project->project_attachment}}" alt="No Attachment!"/>
+                            @else
+                                <h5 class="text-center mt-5">Supervisor has not included an attachment!</h5>
+                            @endif
                         </div>
                     </div>
                 </div>

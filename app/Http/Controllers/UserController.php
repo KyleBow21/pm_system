@@ -11,6 +11,12 @@ use App\Project;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // Apply auth requirement
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,11 +55,21 @@ class UserController extends Controller
             dump($e);
             $selectedProject = null;
         }
+
+        // Get the users marked project form
+        try {
+            $marks = DB::table('marking_forms')->where('project_id', $user->selected_project)->first();
+        } catch (Exception $e) {
+            dump($e);
+            $marks = null;
+        }
+
         return view('users.index')
             ->with('user', $user)
             ->with('selectedProject', $selectedProject)
             ->with('preferredProjects', $preferredProjects)
-            ->with('ownedProjects', $ownedProjects);
+            ->with('ownedProjects', $ownedProjects)
+            ->with('marks', $marks);
     }
 
     /**
