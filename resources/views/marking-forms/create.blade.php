@@ -32,7 +32,7 @@
                                     {{Form::text('student_name', '', ['class' => 'form-control', 'placeholder' => 'Student Name...'])}}
                                 </div>
                                 <div class="form-group col">
-                                    {{Form::text('project_id', '', ['class' => 'form-control', 'placeholder' => 'Project ID...'])}}
+                                    {{Form::select('project_id', $projects, null, ['class' => 'form-control', 'placeholder' => 'Project ID...'])}}
                                 </div>
                                 <div class="form-group col">
                                     {{Form::text('markers_email', '', ['class' => 'form-control', 'placeholder' => 'Marker\'s Email...'])}}
@@ -140,7 +140,7 @@
                                 </div>
                                 <!-- Convert page to PDF -->
                                 <div class="form-group col-2">
-                                    <a class="btn btn-info form-control" href="/marking-forms/pdf">Export to PDF</a>
+                                    <a class="btn btn-info form-control" onclick="window.print()">Export to PDF</a>
                                     <!--<textarea class="form-control" name="projectDescription" id="projectDescription" cols="30" rows="10" placeholder="A short description of you project. This will be displayed in the description section of the projects table..."></textarea>-->
                                 </div>
                             </div>

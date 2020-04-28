@@ -54,7 +54,7 @@
                                             <li onclick="document.location='projects/{{ $ownedProject->id }}'" class="project-list form-control mb-1">{{ $ownedProject->project_name }}<i data-feather="chevron-right"></i></li>
                                         </div>
                                         <div class="form-group col-md-2">
-                                            <button id="{{ $ownedProject->id}}" class="btn btn-primary form-control" onclick="markProject(this.id)">Mark Project</button>
+                                            <a href="/marking-forms/create" id="{{ $ownedProject->id }}" class="btn btn-primary form-control">Mark Project</a>
                                         </div>
                                     </div>
                                 @endforeach

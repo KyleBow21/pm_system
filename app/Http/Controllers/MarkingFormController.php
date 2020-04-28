@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\MarkingForm;
+use App\Project;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
-
-use PDF;
 
 class MarkingFormController extends Controller
 {
@@ -45,10 +45,11 @@ class MarkingFormController extends Controller
             'fail' => 'Fail',
             'n/a' => 'N/A'
         ];
+        $projects = Project::orderBy('id', 'asc')->pluck('id', 'project_name')->toArray();
 
         // Create a new marking form
         if(Gate::allows('create-marking-form')) {
-            return view('marking-forms.create')->with('grades', $grades);
+            return view('marking-forms.create')->with('grades', $grades)->with('projects', $projects);
         } else {
             return redirect('/')->with('error', 'Unauthorized');
         }
